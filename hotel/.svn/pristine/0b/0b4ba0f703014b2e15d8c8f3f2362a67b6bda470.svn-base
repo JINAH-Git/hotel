@@ -1,0 +1,103 @@
+@charset "EUC-KR";
+
+ul, ol, li, html, body
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+html, body
+{
+	height: 100%;
+}
+
+body
+{
+	display: flex;
+	flex-direction: column;
+}
+
+section
+{
+	flex: 1;
+}
+
+.head
+{
+ 	width: 100%;
+ 	height: 120px;
+ 	position: relative;
+ 	z-index: 100;
+ 	background-color: #F1E3C4;
+ 	margin: 0;
+ 	padding: 0;
+}
+
+.head a
+{
+	text-decoration: none;
+	color: #101010;
+}
+
+.header
+{
+	width: 1200px; 
+	height: 90px;
+	position: relative;
+	z-index: 100;
+	display: block; 
+	margin: 0 auto;
+}
+
+.logo
+{
+	width: 260px;
+	font-size: 24px;
+	margin: 0 auto;
+	padding: 20px 10px;
+}
+
+.loginArea
+{
+	position: absolute; 
+	top: 10px; 
+	right: 32px; 
+	font-size: 12px;
+}
+
+.hubMenu
+{
+	position: absolute;
+	bottom: 0;
+}
+
+.hubMenu li
+{
+	position: absolute;
+	width: 100px;
+	padding: 5px 10px;
+	font-size: 16px;
+	font-weight: 900;
+	bottom: 0;
+}
+
+.hubMenu li:nth-child(1)
+{
+	left: 90px;
+}
+
+.hubMenu li:nth-child(2)
+{
+	left: 250px;
+}
+
+.hubMenu li:nth-child(3)
+{
+	left: 750px;
+}
+
+.hubMenu li:nth-child(4)
+{
+	left: 900px;
+}

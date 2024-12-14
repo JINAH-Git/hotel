@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<%
+
+String bno    = request.getParameter("bno");
+String rnote  = request.getParameter("rnote");
+
+ReplyVO vo = new ReplyVO();
+vo.setBno(bno);
+vo.setRwriter(login.getKname());
+vo.setRnote(rnote);
+
+ReplyDTO dto = new ReplyDTO();
+dto.insert(vo);
+%>

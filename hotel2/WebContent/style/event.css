@@ -1,0 +1,118 @@
+@charset "EUC-KR";
+
+.write_inner
+{
+	width:700px;
+	min-height:600px;
+	margin:85px;
+}
+.write_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.cancel_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.btn_area
+{
+	position:relative;
+	top:30px;
+}
+.writetbl
+{
+	border-color:#f1e3c4;
+	border-width:5px;
+	border-style:solid;
+}
+.writetbl hr
+{
+	background-color:#EFEFEF;
+	width:705px;
+	margin-top:0px;
+}
+
+.headtype
+{
+	text-align:center;
+}
+.event_inner
+{
+	position:relative;
+	left:-100px;
+	top:-30px;
+	width:880px;
+	height:850px;
+	margin:85px;
+}
+.event_write
+{
+	position:absolute;
+	right:0;
+	top:50px;
+	width:650px;
+	height:100px;
+	margin:85px;
+}
+.event_slt
+{
+	width:880px;
+	height:800px;
+}
+
+.event_core
+{
+	position:relative;
+	width:350px;
+	height:300px;
+	padding:10px;
+	text-align:center;
+	float:left;
+}
+.event_slt img
+{
+	align-items: center; 
+ 	width:310px; 
+ 	height:230px;
+}
+
+.event_slt a
+{
+	width:200px;
+	margin-left:30px;
+	font-family: Roxborough;
+	font-weight: bold;
+	font-size:20px;
+	text-decoration: none;
+	color: #000;
+}
+
+.event_slt div
+{
+	width:400px
+}
+
+.adminBtn a
+{
+	text-decoration: none;
+	position:absolute;
+	width:50px;
+	top:-178px;
+	left:685px;
+}
+
+.adminBtn a:visited 
+{
+	color: #000;	
+	text-decoration: none;
+	position:absolute;
+	width:50px;
+	top:-178px;
+	left:685px;
+}

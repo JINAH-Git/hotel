@@ -1,0 +1,288 @@
+/* 달력(calendar)에 관한 js */
+
+var today = new Date(); //오늘 날짜
+var nextmonth = new Date(today.getFullYear(),today.getMonth()+1,today.getDate()); //오늘 날짜에서 월만 다음 월로 변환
+
+var date = new Date();
+//사용자가 클릭한 셀 객체 저장
+var selectedCell;
+//오늘 기준으로 불현하는 월. 일 객체
+var realMonth = date.getMonth()+1;
+var realToDay = date.getDate();
+//사용자가 클릭한 일자의 월, 일 객체
+var selectedMonth = null;
+var selectedDate = null;
+//예약일을 담을 배열 생성
+var resvdata = [];
+
+function buildCalendar()
+{
+	var row = null;
+	var row2 = null;
+	var cnt = 0;
+	var cnt2 = 0;
+	var calendarTable = document.getElementById("calendar");
+	var calendarTable2 = document.getElementById("calendar2");
+	var calendarTableTitle = document.getElementById("calendarTitle");
+	var calendarTableTitle2 = document.getElementById("calendarTitle2");
+	calendarTableTitle.innerHTML = today.getFullYear()+"년 "+(today.getMonth()+1)+"월";
+	calendarTableTitle2.innerHTML = nextmonth.getFullYear()+"년 "+(nextmonth.getMonth()+1)+"월";
+  
+	//이번 달의 첫째 날과 마지막 날을 구한다.
+	var firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
+	var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0);
+	
+	//다음 달의 첫째 날과 마지막 날을 구한다.
+	var firstDate2 = new Date(nextmonth.getFullYear(), nextmonth.getMonth(), 1);
+	var lastDate2 = new Date(nextmonth.getFullYear(), nextmonth.getMonth()+1, 0);
+	
+	while(calendarTable.rows.length > 2)
+	{
+		calendarTable.deleteRow(calendarTable.rows.length -1);
+	}
+	
+	while(calendarTable2.rows.length > 2)
+	{
+		calendarTable2.deleteRow(calendarTable2.rows.length -1);
+	}
+	
+	//이번 달의 첫째 날의 요일을 구해서 시작점을 잡는다.
+	row = calendarTable.insertRow();
+	for(i = 0; i < firstDate.getDay(); i++)
+	{
+		cell = row.insertCell();
+		cnt += 1;
+	}
+	
+	//다음 달의 첫째 날의 요일을 구해서 시작점을 잡는다.
+	row2 = calendarTable2.insertRow();
+	for(i = 0; i < firstDate2.getDay(); i++)
+	{
+		cell2 = row2.insertCell();
+		cnt2 += 1;		cell2.style.height = '50px';
+	}
+	
+	//오늘 날짜 구하기
+	y = today.getFullYear();
+	m = ( 1 + today.getMonth() );
+	d = today.getDate();
+	m = m >= 10 ? m : '0' + m; 	//1~9월은 앞에 0을 붙여준다.
+	d = d >= 10 ? d : '0' + d; //1~9일은 앞에 0을 붙여준다.
+	ymd = y + "-" + m + "-" + d; //오늘 날짜를 8자리 형식으로 구한다.
+	if($("#checkin").val() == 0 || $("#checkin").val() == "null")
+	{
+		$("#checkin").val(ymd);
+	}
+	
+	//내일 날짜 구하기
+	var tmr = new Date(today.setDate(today.getDate()+1));
+	tmry = today.getFullYear();
+	tmrm = ( 1 + today.getMonth() );
+	tmrd = today.getDate();
+	tmrm = tmrm >= 10 ? tmrm : '0' + tmrm; 	//1~9월은 앞에 0을 붙여준다.
+	tmrd = tmrd >= 10 ? tmrd : '0' + tmrd; //1~9일은 앞에 0을 붙여준다.
+	tmrymd = tmry + "-" + tmrm + "-" + tmrd; //오늘 날짜를 8자리 형식으로 구한다.
+	if($("#checkout").val() == 0 || $("#checkout").val() == "null")
+	{
+		$("#checkout").val(tmrymd);
+	}
+	
+	//이번 달의 마지막날까지 숫자를 집어넣는다.
+	row1 = calendarTable.insertRow();
+	for(i = 1; i <= lastDate2.getDate(); i++)
+	{
+		cell = row.insertCell();
+		cnt += 1;		
+		
+		i = i >= 10 ? i : '0' + i; //1~9일은 앞에 0을 붙여준다.
+		/* id는 값이 다르기 때문에 for문의 i를 넣는 것이고 오늘 날짜 getDate()로 따로 구해야한다. */
+
+		ymi = y + "-" + m + "-" +  i; //클릭한 셀의 id에 넣을 날짜 형식 ex)20001122 8자리로 나오게 만든다.
+		
+		//셀의 형식
+		cell.setAttribute('id',ymi); //ymi를 넣어야 id가 각각 다르게 나온다.
+		cell.innerHTML = i;
+		cell.style.textAlign = 'center';
+		cell.style.width = '50px';
+		cell.style.height = '50px';
+		cell.style.cursor = 'pointer';
+		
+		cellid = cell.getAttribute('id');
+		//일요일은 빨간 색
+	    if (cnt % 7 == 1) 
+	    {
+	    	cell.innerHTML = "<font color=red>" + i + "</font>";
+	    }
+	
+	    //토요일은 파란 색
+	    if (cnt % 7 == 0)
+	    {
+	    	cell.innerHTML = "<font color=blue>" + i + "</font>";
+	    	row = calendar.insertRow();
+	    }	
+	    
+	    cellfmt = cell.getAttribute('id').replaceAll("-","");
+	  
+	    //이전 날짜 표시
+		if(cellfmt < '20230719') //셀의 id가 오늘의 날짜와 같을 때
+		{
+			cell.setAttribute('class','other');
+		}
+		
+	    //오늘 날짜 표시
+		if(cellfmt == '20230719') //셀의 id가 오늘의 날짜와 같을 때
+		{
+			cell.innerHTML = '오늘';
+			cell.style.background = 'brown';
+		}		
+		cellclick();
+	}
+	/* 테이블에 셀 넣는 반복문 끝나는 부분*/
+	
+
+	//다음 달의 마지막날까지 숫자를 집어넣는다.
+	row3 = calendarTable2.insertRow();
+	for(i = 1; i <= lastDate2.getDate(); i++)
+	{
+		cell = row2.insertCell();
+		cnt2 += 1;		
+		
+		y = nextmonth.getFullYear();
+		m = ( 1 + nextmonth.getMonth() );
+		m = m >= 10 ? m : '0' + m; //1~9월은 앞에 0을 붙여준다.
+		i = i >= 10 ? i : '0' + i; //1~9일은 앞에 0을 붙여준다.
+		
+		ymi = y + "-" + m + "-" +  i; //클릭한 셀의 id에 넣을 날짜 형식 ex)20001122 8자리로 나오게 만든다.
+			
+		//셀의 형식
+		cell.setAttribute('id',ymi); //ymi를 넣어야 id가 각각 다르게 나온다.
+		cell.innerHTML = i;
+		cell.style.textAlign = 'center';
+		cell.style.width = '50px';
+		cell.style.height = '50px';
+		cell.style.cursor = 'pointer';
+		
+		cellid2 = cell.getAttribute('id');
+		//일요일은 빨간 색
+		if (cnt2 % 7 == 1) 
+		{
+			cell.innerHTML = "<font color=red>" + i + "</font>";
+		}
+		
+		//토요일은 파란 색
+		if (cnt2 % 7 == 0)
+		{
+			cell.innerHTML = "<font color=blue>" + i + "</font>";
+			row2 = calendar2.insertRow();
+		}	
+		cellclick();
+	}
+	/* 테이블에 셀 넣는 반복문 끝나는 부분*/
+}
+
+function cellclick()
+{
+	//클릭한 셀은 배경색이 바뀌게한다.(클래스 추가)
+    //클릭한 셀의 날짜를 구하고 처음 클릭한 날짜는 체크인에 담고 두번째 클릭한 날짜는 체크아웃에 담는다.
+    cell.onclick = function()
+	{
+		//오늘 이전의 날짜에 체크인을 하려 할 때 
+		if(this.getAttribute('id').replaceAll("-","") < ymd.replaceAll("-",""))
+		{
+			alert("지난 날짜에는 예약할 수 없습니다.");
+			return;
+		//오늘이후의 날짜에 체크인을 할때
+		}else
+		{
+			//이미 체크인 클래스가 있다면
+			if(resvdata[0] != null) 
+			{ 		
+				//이미 체크아웃 클래스가 있다면
+				if(resvdata[1] != null)
+				{
+					if($("#checkin").val() == ymd)
+					{
+						$(".checkin").html("오늘");						
+					}else
+					{
+						$(".checkin").html(resvdata[0].slice(-2));						
+					}
+					$(".checkout").html(resvdata[1].slice(-2));
+					$('td').removeClass('checkin'); //클래스 체크인 지우기
+					$('td').removeClass('checkout'); //클래스 체크아웃 지우기
+					resvdata = [];	//배열에 담긴 체크인,체크아웃 날짜 지우기
+					
+					//체크인 완료
+			  		document.getElementById(this.getAttribute('id')).classList.add('checkin');
+			  		$(".checkin").html("in");
+			  		$("#checkin").val(this.getAttribute('id'));
+			  		resvdata.push(this.getAttribute('id'));				
+					return;
+				}else
+				{	
+					if($("#checkin").val() >= this.getAttribute('id'))
+					{
+						alert("체크아웃 날짜는 체크인 날짜 이후로만 설정가능합니다. ");
+						return;
+					}else
+					{
+						$("#checkout").val(this.getAttribute('id'));
+						//예약 기간이 30일이 넘을 때 
+						if(getDateDiff($("#checkout").val(),$("#checkin").val()) > 30)
+						{
+							alert("예약 일수는 30일을 초과할 수 없습니다.");
+							$("#checkout").val(tmrymd);
+							return;
+						}else
+						{
+							//체크아웃 완료
+							document.getElementById(this.getAttribute('id')).classList.add('checkout');
+							$(".checkout").html("out");
+							resvdata.push(this.getAttribute('id'));
+							night = getDateDiff($("#checkout").val(),$("#checkin").val()) + "박";							
+							$("#night").val(night);	
+							$("#date").css('display','none');
+							result = getDatesStartToLast($(".checkin").val(),$(".checkout").val());
+							console.log($("#checkin").val());
+							console.log($("#checkout").val());
+							console.log(result);
+						}
+					}
+				}
+			}
+			//체크인 클래스가 없다면
+		  	else 
+		  	{    
+		  		//체크인 완료
+		  		document.getElementById(this.getAttribute('id')).classList.add('checkin');
+		  		$(".checkin").html("in");
+		  		$("#checkin").val(this.getAttribute('id'));
+		  		resvdata.push(this.getAttribute('id'));
+		  	}	
+		}
+	}	
+    /* 버튼 끝나는 부분*/
+}
+
+//날짜와 날짜 사이의 일 수 계산
+const getDateDiff = (d1, d2) => {
+	const date1 = new Date(d1);
+	const date2 = new Date(d2);
+  
+	const diffDate = date1.getTime() - date2.getTime();
+  
+	return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+}
+
+//날짜와 날짜사이에 모든 날짜 배열에 담기
+function getDatesStartToLast(startDate, lastDate) {
+	var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+	if(!(regex.test(startDate) && regex.test(lastDate))) return "Not Date Format";
+	var result = [];
+	var curDate = new Date(startDate);
+	while(curDate <= new Date(lastDate)) {
+		result.push(curDate.toISOString().split("T")[0]);
+		curDate.setDate(curDate.getDate() + 1);
+	}
+	return result;
+}

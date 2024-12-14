@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+String acategory = request.getParameter("acategory");
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>부대 시설 수정</title>
+		<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="../../style/modify.css" />
+	</head>
+<%@ include file="../../include/head.jsp" %>
+<%
+if(login == null)
+{
+	response.sendRedirect("index.jsp?acategory=F");
+	return;
+}
+UserDTO udto = new UserDTO();
+UserVO user = udto.read(login.getEmail());
+if(!user.getLevel().equals("A"))
+{
+	response.sendRedirect("index.jsp?acategory=F");
+	return;
+}
+
+%>
+<script>
+window.addEventListener('load',function(){
+	//취소
+	$("#cancel").click(function(){
+		location.href = "index.jsp?acategory=<%= acategory %>";
+		return;
+	})
+});
+
+//수정
+function DoModify(ano)
+{
+	if(!confirm("정말 수정하시겠습니까?") == false)
+	{
+		$("#modifyFrm").submit();
+	}
+	return;
+}
+
+//삭제
+function DoDelete(ano)
+{
+	if(!confirm("정말 삭제하시겠습니까?") == false)
+	{
+		location.href = "delete.jsp?ano=" + ano;
+	}
+	return;
+}
+</script>
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>호텔 소개</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../map/">오는 길 소개</a></li>
+				<li><a href="../roominfo/index.jsp?acategory=T">객실 소개</a></li>
+				<li><a href="../service/index.jsp?acategory=F" style="background-color: white; padding: 0 30px;">부대 시설</a></li>
+				<li><a href="../notice/index.jsp?acategory=N">공지사항</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>부대 시설 수정</h3>
+			<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 호텔 소개 &gt; 부대 시설 수정</p>
+			<hr>
+			<input type="button" value="추가" id="add">
+				<%
+				AdminDTO dto = new AdminDTO();
+				ArrayList<AdminVO> list = dto.list(acategory);
+				for(AdminVO vo : list)
+				{
+					%>	
+					<form name="modifyFrm" id="modifyFrm" action="modifyok.jsp" enctype="multipart/form-data">	
+						<input type="hidden" name="acategory" value="<%= vo.getAcategory() %>">	
+						<div class="service">
+							<input type="hidden" name="ano" value="<%= vo.getAno() %>">
+							시설 이름 : <input type="text" name="atitle" value="<%= vo.getAtitle() %>">
+							<textarea style="width: 700px; height: 300px; resize: none; outline: none;" placeholder="시설 설명" name="anote"><%= vo.getAnote() %></textarea>
+							<input type="file" name="afname" id="afname">
+							<input type="button" value="삭제" id="delete" onclick="DoDelete(<%= vo.getAno() %>)">
+							<input type="button" value="수정" id="modify" onclick="DoModify(<%= vo.getAno() %>)">
+						</div>
+					</form>
+					<%
+				}
+				%>
+				<input type="button" value="취소" id="cancel">
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>

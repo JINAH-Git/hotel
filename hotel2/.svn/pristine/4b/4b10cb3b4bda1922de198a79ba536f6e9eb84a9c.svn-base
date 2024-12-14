@@ -1,0 +1,40 @@
+<!-- 
+작성자: 김진아
+작성일: 23.07.05.수
+로그아웃 처리 기능 
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%@ page import="hotel.vo.*" %>
+<%
+String userid = request.getParameter("userid");
+String userpw = request.getParameter("userpw");
+
+if(userid == null || userpw == null)
+{
+	response.sendRedirect("login.jsp");
+	return;
+}
+
+UserDTO dto = new UserDTO();
+if(dto.login(userid,userpw) == false)
+{
+	//로그인 실패
+	%>
+	<script>
+		alert("아이디 또는 비빌번호가 일치하지않습니다.");
+		document.location = "login.jsp";
+	</script>
+	<% 
+}else
+{
+	//로그인 성공
+	//로그인 사용자 정보를 읽는다.
+	UserVO user = dto.read(userid);
+	
+	session.setAttribute("login",user);	
+	response.sendRedirect("../index.jsp"); 
+}
+%>

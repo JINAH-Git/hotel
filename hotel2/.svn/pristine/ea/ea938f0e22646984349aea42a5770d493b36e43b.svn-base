@@ -1,0 +1,41 @@
+@charset "EUC-KR";
+
+.write_inner
+{
+	width:700px;
+	height:600px;
+	margin:85px;
+}
+.write_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.cancel_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.btn_area
+{
+	position:relative;
+	top:30px;
+}
+.writetbl
+{
+	border-color:#f1e3c4;
+	border-width:5px;
+	border-style:solid;
+}
+.writetbl hr
+{
+	background-color:#f1e3c4;
+	height:5px;
+	width:705px;
+	margin-top:0px;
+	margin-bottom:0px;
+}

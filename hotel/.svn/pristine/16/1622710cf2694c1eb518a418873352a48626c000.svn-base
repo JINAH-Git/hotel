@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tail</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/tail.css" />
+	</head>
+	<body>
+		<footer>
+			<div class="footer">
+				<div class="localBox">
+					<img src="/hotel/image/hotel.jpg" width="170px" height="170px">
+					<div class="brandInfo">
+						<dl class="brand">
+							<dt><a href="#">BRAND1</a></dt>
+							<dt><a href="#">BRAND2</a></dt>
+							<dt><a href="#">BRAND3</a></dt>
+						</dl>
+					</div>
+					<!-- //.brand -->
+					<div class="hotelInfo">
+						<dl class="introduction">
+							<dd>호텔이젠 소개</dd>
+							<dd>호텔 개발</dd>
+							<dd>고객문의</dd>
+							<dd>사이트맵</dd>
+						</dl>
+						<!-- //.introduction -->
+						<dl class="tel">
+							<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+							<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+						</dl>
+						<!-- //.tel -->
+					</div>
+					<!-- //.hotelinfo -->
+				</div>
+				<!-- //.localBox -->
+			</div>
+			<!-- //.footer -->
+		</footer>
+	</body>
+</html>

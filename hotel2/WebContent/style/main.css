@@ -1,0 +1,104 @@
+@charset "EUC-KR";
+
+/*인덱스 이미지 슬라이드 위치 지정 코드*/
+.slider
+{
+    width: 1920px;
+    height: 650px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slider .indicators .indicator-item {
+	display: inline-block;
+	position: relative;
+	background-color: #666666;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.slider .indicators .indicator-item.active {
+	background-color: #ffffff;
+}
+
+.slider .indicators {
+	bottom: 10px;
+	z-index: 100;
+  /* text-align: left; */
+}
+
+@font-face 
+{
+	font-family: "Roxborough"; /*font 이름*/
+    /* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
+    src: url("/hotel2/fonts/Roxborough CF.ttf"); 
+}
+
+.htitle
+{
+	font-family: Roxborough;
+	font-size: 80px;
+}
+
+
+/* 예약 폼 감싼 div 위치 잡기*/
+#resv
+{
+	/*border: 2px solid red;*/
+	display: inline-block;
+	margin: 0 auto;
+	position: absolute;
+	width: 1000px;
+	left: 100px;
+	height: 110px;
+}
+
+/* dining & service 부분 영역 잡기*/
+#serviceimg
+{
+	/*border: 2px solid green;*/
+	width: 1000px;
+	height: 900px;
+	background-color: #fff;
+	z-index: 2;
+}
+
+/*다이닝 이동 영역*/
+#todining
+{
+	/*border: 2px solid pink;*/
+	width: 1000px;
+	height: 400px;
+}
+
+/*객실 소개 이동 영역*/
+#torooms
+{
+	/*border: 2px solid skyblue;*/
+	width: 490px;
+	height: 300px;
+	margin: 25px 0;
+	float: left;
+}
+
+/*오시는 길 이동 영역*/
+#tomap
+{
+	/*border: 2px solid yellow;*/
+	width: 490px;
+	height: 300px;
+	float: left;
+	margin: 25px 0 0 17px;
+}
+
+/*메인 화면 크기 조정*/
+.main
+{
+	/*border: 2px solid blue;*/
+	width: 1200px;
+	height: 1150px;
+	margin: 0 auto;
+	position: relative;
+}

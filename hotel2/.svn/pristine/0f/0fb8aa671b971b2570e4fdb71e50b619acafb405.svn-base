@@ -1,0 +1,74 @@
+@charset "EUC-KR";
+
+/*admin - resv ctrl css */
+#usertable
+{
+	border:1px solid black;
+	border-collapse:collapse; 
+	text-align:center;
+	margin:auto;
+	width:840px;
+}
+td
+{
+	height:70px;
+}
+		
+/*tab css*/
+.tab_menu
+{
+	position:relative;
+	float:left;
+}
+
+ .tab_menu .list
+{
+	overflow:hidden;
+	width:870px; 
+	height:50px;
+	list-style: none;
+}
+
+.tab_menu .list li
+{
+	background: none;
+	float:left; 
+	margin-right:14px;
+	padding: 10px 15px;
+	display: inline-block; 
+	text-align:center;
+}
+
+.tab_menu .list li.is_on .btn
+{
+	font-weight:bold;
+	color:black;
+}
+
+.tab_menu .list .btn
+{
+	font-size:25px;
+}
+
+.tab .tabcontent
+{
+	margin-top:10px;
+}
+.tab_menu .cont_area .cont
+{
+	display:none;
+	text-align:center; 
+}
+
+a
+{
+	text-decoration-line:none;
+	color:#808080;
+}
+
+body
+{
+	 style="overflow-x:hidden; overflow-y:scroll"
+}
+
+		

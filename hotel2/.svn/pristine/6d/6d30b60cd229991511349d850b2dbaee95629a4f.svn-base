@@ -1,0 +1,93 @@
+<!-- 
+작성자: 장영재
+작성일: 23.07.10 (월)
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+String adcnt  = request.getParameter("adult");
+String chcnt  = request.getParameter("child");
+String kidcnt = request.getParameter("kid");
+
+if(adcnt == null || chcnt == null || kidcnt == null)
+{
+	%>
+	<script>
+		alert("입력한 데이터가 올바르지 않습니다.");
+		location.href = "step1.jsp";
+	</script>
+	<%
+}
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>예약 2단계</title>		
+		<link rel="stylesheet" type="text/css" href="../../style/resv.css" />
+	</head>
+
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="stepWrap">
+			<ul class="step">
+				<li id="step1">1</li>&nbsp; &ndash; &nbsp;
+				<li id="step2" style="background-color: brown; color: white;">2</li>&nbsp; &ndash; &nbsp;
+				<li id="step3">3</li>
+			</ul>
+		</div>
+		<!-- //.stepWrap -->
+		<p>예약 정보</p>
+		<div id="contents2" style="width: 1000px; margin: 0 auto;">
+			<form action="step3.jsp" method="get">
+				<input type="hidden" value=<%= adcnt %>  name="adult">
+				<input type="hidden" value=<%= chcnt %>  name="child">
+				<input type="hidden" value=<%= kidcnt %> name="kid">
+				<table>
+					<tr>
+						<td rowspan="2"><img src="/hotel/image/standard.jpg" width="400px;" height="300px;"></td>
+						<td>
+							<div style="width: 600px; padding: 15px 20px;">
+								-이용시 주의사항 부가가치세 10%가 부과됩니다.<br>
+								-체크인 15시 체크아웃 11시<br>
+								-어쩌고저쩌고 주의사항<br>
+								-어쩌고저쩌고 주의사항<br>
+								-어쩌고저쩌고 주의사항<br>
+								-어쩌고저쩌고 주의사항	<br>
+								-단체예약시 063 - 252 - 1234 연락처로 문의바랍니다.	<br>	
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="width: 600px; padding: 15px 20px;">
+								Requests <br>
+								<textarea placeholder="호텔 이용시 문의하실 사항이 있으시면 입력해 주세요." name="request" style="width: 600px; height: 70px; outline: none; resize: none; font-size: 16px;"></textarea>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table style="margin-top: 70px;">
+					<tr>
+						<td>
+							<div style="width: 1000px; padding: 15px 20px; text-align: center; font-size: 24px; font-weight: bold;">
+								▣ 유의사항, 취소 및 환불 규정을 모두 확인해주세요.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="width: 1000px; padding: 15px 20px; text-align: center; font-size: 24px; font-weight: bold;">
+								<input type="submit" value="확인" style="background: #F1E3C4; padding: 5px 10px; font-size: 24px; border-radius: 5%; border: 1px solid #F1E3C4; cursor: pointer;">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<!-- //#contents2 -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>

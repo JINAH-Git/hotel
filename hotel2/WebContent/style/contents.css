@@ -1,0 +1,119 @@
+@charset "EUC-KR";
+
+.main
+{
+	width: 1200px;
+	min-height: 100vh;
+	margin: 0 auto;
+	position: relative;
+}
+
+/* 메뉴바 css */
+.menubar
+{
+	display: inline-block;
+	width: 270px; 
+	height: 300px; 
+	margin-top: 50px; 
+	background-color: #F5F5F7;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.menubar h2
+{	
+	color: black;
+}
+
+.menubar hr
+{
+	height: 5px;
+	Width : 200px; 
+	background-color: black;
+	border: none;
+}
+
+.menu
+{
+	width: 270px;
+	height: 200px;
+}
+
+.menu li
+{
+	margin-top: 25px;
+}
+
+.menu a
+{
+	text-decoration: none;
+	color: black;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+/* 내용 부분 css */
+.contents
+{
+	float: right;
+	width: 930px;
+	padding: 50px 30px;
+	box-sizing: border-box;
+}
+
+.contents h3
+{
+	color: black;
+	font-weight: bold;
+	display: inline;
+}
+
+.contents hr
+{
+	height: 5x;
+	border: none;
+	margin-top: 15px;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.list
+{
+	float: right;
+	font-size: 12px;
+}
+
+.list img
+{
+	width: 10px;
+	height: 10px;
+}
+
+#write, #cancel, #modify, #delete, #add
+{
+	width: 60px;
+	border-radius: 10%;
+	border-width: 0;
+	background: #DFDFE3;
+	font-size: 18px;
+	cursor: pointer;
+	margin: 0 0 0 10px;
+	text-align: center;
+	color: #000;
+	float:right;
+}
+
+.adminBtn a
+{
+	text-decoration: none;
+}
+
+.adminBtn a:visited 
+{
+	color: #000;	
+}
+.question_inner a
+{
+	text-decoration: none;
+	color: black;
+}

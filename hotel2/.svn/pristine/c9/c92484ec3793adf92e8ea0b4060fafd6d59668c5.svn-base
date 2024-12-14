@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+String token = (String)session.getAttribute("token");
+
+String ecode = request.getParameter("ecode");
+if(ecode == null || ecode.equals(""))
+{
+	%>
+	<script>
+	alert("코드가 입력되지 않았습니다.");
+	window.location.href="pwfind.jsp";
+	</script><%
+	return;
+}else if(ecode.equals(token))
+{
+	%>
+	<script>
+	alert("인증 완료 되었습니다.");
+	window.location.href="pwchange.jsp";
+	</script>
+	<%
+	return;
+}else
+{
+	%>
+	<script>
+	alert("입력한 코드가 올바르지 않습니다. 다시 입력하세요.");
+	window.location.href="pwfind.jsp";
+	</script>
+	<%
+	return;
+}
+%>

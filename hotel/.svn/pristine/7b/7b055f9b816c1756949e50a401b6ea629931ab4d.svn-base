@@ -1,0 +1,235 @@
+<!-- 
+23-07-03 성재 | 첫 작성함.
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>문의하기 수정</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/main.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/menubar.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+	</head>
+	<body>
+		<style>
+			.modify_inner
+			{
+				width:700px;
+				height:600px;
+				margin:85px;
+			}
+			.write_btn
+			{
+				position:relative;
+				left:300px;
+				top:50px;
+				width:70px;
+				height:45px;
+				font-size:18px;
+			}
+			.cancel_btn
+			{
+				position:relative;
+				left:330px;
+				top:50px;
+				width:70px;
+				height:45px;
+				font-size:18px;
+			}
+		</style>
+		<div class="head">
+			<div class="header">
+				<h1 class="logo">
+					<a href="/hotel/index.html">Ezen <br> Hotels & Resorts</a>
+				</h1>
+				<span class="loginArea">
+					<a href="/hotel/user/login.html">로그인</a>&nbsp;|
+					<a href="/hotel/user/join.html">회원가입</a>&nbsp;|
+					<a href="/hotel/resv/confirm.html">예약 확인</a>
+				</span>
+				<!-- //.loginArea -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<a href="/hotel/resv/doresv.html">예약</a>
+							<img src="/hotel/image/calender.png" width="20px;" height="20px;">
+						</li>
+						<li>
+							<a href="/hotel/info/map">호텔 소개</a>
+						</li>
+						<li>
+							<a href="/hotel/faq/question">고객 문의</a>
+						</li>
+						<li>
+							<a href="/hotel/promotion/event">프로모션</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			<div class="menubar">
+				<h2>고객 문의</h2>
+				<hr>
+				<ul class="menu">
+					<li><a href="/hotel/faq/question/">자주 묻는 질문</a></li>
+					<li><a href="/hotel/faq/inquiry/" style="background-color: yellow; padding: 0 30px;">고객 문의</a></li>
+				</ul>
+				<!-- //.menu -->
+			</div>
+			<!-- //.menubar -->
+			<div class="contents">
+				<h3>고객 문의</h3>
+				<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 고객 문의 &gt; 고객 문의</p>
+				<hr>
+				<div class="modify_inner">
+					<table border="1" style="width:700px; height:400px; border-collapse:collapse;">
+						<tr>
+							<td><input type="text" name="title" style="width:700px; height:50px; font-size:18px;" placeholder="제목을 입력하세요" value="이거 답변해주세요"></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="name" style="width:700px; height:50px; font-size:18px;" placeholder="이름을 입력하세요" value="이성재"></td>
+						</tr>
+						<tr>
+							<td><textarea name="note" style="width:700px; height:295px; resize:none;" placeholder="내용을 입력하세요">내용입니다.</textarea></td>
+						</tr>
+						<tr style="width:710px; height:0px;">
+							<td><input type="file" name="attach"></td>
+						</tr>
+					</table>
+					<table border="0" style="width:700px;">
+						<tr>
+							<td>
+							<input type="radio" name="lock_btn" value="Y">공개
+							<input type="radio" name="lock_btn" value="N">비공개
+							</td>
+						</tr>
+					</table>
+					<a href="view.html"><input type="submit" class="write_btn" value="등록"></a>
+					<a href="index.html"><input type="submit" class="cancel_btn" value="취소"></a>
+				</div>
+				<!-- //.modify_inner -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<div class="tail">
+			<div class="localBox">
+				<img src="image/hotel.jpg" width="170px" height="170px">
+				<div class="brandInfo">
+					<dl class="brand">
+						<dt><a href="#">HOTEL1</a></dt>
+						<dt><a href="#">HOTEL2</a></dt>
+						<dt><a href="#">HOTEL3</a></dt>
+					</dl>
+				</div>
+				<!-- //.brand -->
+				<div class="info">
+					<dl class="introduction">
+						<dd>호텔이젠 소개</dd>
+						<dd>호텔 개발</dd>
+						<dd>고객문의</dd>
+						<dd>사이트맵</dd>
+					</dl>
+					<!-- //.introduction -->
+					<dl class="hotelInfo">
+						<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+						<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+					</dl>
+					<!-- //.hotelInfo -->
+				</div>
+				<!-- //.info -->
+			</div>
+			<!-- //.localBox -->
+			<div class="footer">
+			</div>
+			<!-- //.footer -->
+		</div>
+		<!-- //.tail -->
+	</body>
+</html>
+				</span>
+				<!-- //.loginArea -->
+				<div class="resvConfirm">
+					<a href="resvConfirm.html">예약 확인</a>
+				</div>
+				<!-- //.resvConfirm -->
+				<div class="search">
+					<input type="text" name="keyword" placeholder="검색">
+					<img src="image/search.png" id="searchBtn">
+				</div>
+				<!-- //.search -->
+				<div class="reservation">
+					<a href="resv.html">예약</a>
+				</div>
+				<!-- //.reservation -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<span>
+								<a href="aboutEzen.html">호텔 소개</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<a href="#">고객 문의</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<a href="#">프로모션</a>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<div class="tail">
+			<div class="localBox">
+				<img src="image/hotel.jpg" width="170px" height="170px">
+				<div class="brandInfo">
+					<dl class="brand">
+						<dt><a href="#">HOTEL1</a></dt>
+						<dt><a href="#">HOTEL2</a></dt>
+						<dt><a href="#">HOTEL3</a></dt>
+					</dl>
+				</div>
+				<!-- //.brand -->
+				<div class="info">
+					<dl class="introduction">
+						<dd>호텔이젠 소개</dd>
+						<dd>호텔 개발</dd>
+						<dd>고객문의</dd>
+						<dd>사이트맵</dd>
+					</dl>
+					<!-- //.introduction -->
+					<dl class="hotelInfo">
+						<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+						<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+					</dl>
+					<!-- //.hotelInfo -->
+				</div>
+				<!-- //.info -->
+			</div>
+			<!-- //.localBox -->
+			<div class="footer">
+			</div>
+			<!-- //.footer -->
+		</div>
+		<!-- //.tail -->
+	</body>
+</html>

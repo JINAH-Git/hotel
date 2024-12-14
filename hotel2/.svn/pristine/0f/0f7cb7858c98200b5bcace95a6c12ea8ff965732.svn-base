@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<%
+//번호와 카테고리값을 받아온다.
+String      bno = request.getParameter("bno");
+String category = request.getParameter("category");
+if(category == null) category = "R";
+
+//사용자의 이메일값이 null이면 돌아간다.
+UserVO login_id = (UserVO)session.getAttribute("email");
+if(login == null || bno == null)
+{
+	out.println("값이 없습니다.");
+	return;
+}
+
+BoardDTO dto = new BoardDTO();
+BoardVO   vo = dto.read(bno,false);
+
+//해당 게시물 작성자가 아니면 종료한다.
+if(!login.getEmail().equals(vo.getEmail()))
+{
+	out.println("해당 게시물의 작성자가 아닙니다!");
+	return;
+}
+
+//게시물을 삭제한다.
+dto.delete(bno);
+out.println("게시물이 삭제되었습니다.");
+%>

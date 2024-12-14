@@ -1,0 +1,172 @@
+@charset "EUC-KR";
+
+.main
+{
+	border: 1px solid lightgray;
+    background-color: white;
+    width: 1200px;
+    margin:53px auto;
+    position:relative;
+}
+/* 아이디 비밀번호 전체 */
+.pwfindtotal
+{
+	background-color:white;
+	padding: 63px 50px;
+	text-align:center;
+}
+
+#txtGuide
+{
+    width: 50%;
+    height: 65px;
+    padding: 20px;
+}
+
+/* 로그인 표지 전체 */
+.introduction
+{
+	width:300px;
+	height:50px;
+	text-align: center;
+}
+/* 로그인 표지 SIGN IN */
+.introhead
+{
+	width: 500px;
+	text-align: left;
+	font-size:15px;
+}
+.introtext 
+{
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-family: notokrL, gothamL, playfair;
+}
+.line
+{
+	border 1px solid;
+	margin: 0;
+	
+}
+
+.pwfindtotaltext
+{
+	width:1200px;
+	margin: 0 auto;
+	margin-left:30px;
+}
+/* 생년월일 코멘트 */
+.birthtext
+{
+	position:absolute;
+	background-color: #f9f9f9;
+	width: 350px;
+	height: 10px;
+	top:190px;
+	padding: 20px;
+	border: solid #ccc;
+	border-width: 0 0 1px 0;
+	margin-bottom: 15px;
+	font-size: 18px;
+	vertical-align: middle;
+	color: #000;
+	left: 300px;
+}
+
+/* number 코멘트 */
+.infodovalue9
+{
+	color:#B01414;
+	margin-top: 35px;
+	width:500px;
+	margin-left:53px;
+}
+/* 이메일  코멘트 */
+.infodovalue4
+{
+	color:#B01414;
+	width:500px;
+	position:absolute;
+	top:260px;
+	margin-left:20px;
+}
+/* 이메일 코드 내용란 */
+.emailid
+{
+	background-color: #f9f9f9;
+	width: 350px;
+	height: 10px;
+	padding: 20px;
+	border: solid #ccc;
+	border-width: 0 0 1px 0;
+	margin-bottom: 15px;
+	font-size: 18px;
+	vertical-align: middle;
+	color: #000;
+	position:absolute;
+	left:300px;
+	top:280px;
+}
+.emailbutton
+{
+    position:absolute;
+	width: 190px;
+    height: 50px;
+    font-size: 18px;
+	color: #000;
+	border: 1px solid #000;
+	background: #fff;
+	left:700px;
+	top:280px;
+}
+/*인증번호 코멘트*/
+.codecomment
+{
+	color:#B01414;
+	width:500px;
+	margin-top:75px;
+	position:absolute;
+	margin-left:70px;
+}
+/* 인증번호 입력란 */
+.ecode
+{
+	background-color: #f9f9f9;
+	position:absolute;
+	width: 350px;
+	height: 10px;
+	padding: 20px;
+	border: solid #ccc;
+    border-width: 0 0 1px 0;
+	margin-bottom: 30px;
+	font-size: 18px;
+	vertical-align: middle;
+	color: #000;
+	margin-top:75px;
+	left:300px;
+	
+}
+.codestartcheck
+{
+	position:absolute;
+	width:190px;
+	height:50px;
+	top:370px;
+	right:310px;
+	font-size: 18px;
+	border: 1px solid #000;
+	background: #fff;
+}
+/*ajax 메시지 출력 위치*/
+#msg
+{
+	position:absolute;
+	width: 380px;
+	top:255px;
+	color:red;
+}
+

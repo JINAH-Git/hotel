@@ -1,0 +1,6 @@
+//관리자 게시판 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+package hotel.dto;
+
+public class AdminDTO {
+
+}

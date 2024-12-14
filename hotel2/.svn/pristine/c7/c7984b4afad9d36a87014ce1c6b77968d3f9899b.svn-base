@@ -1,0 +1,16 @@
+@charset "EUC-KR";
+
+/*admin - userctrl css */
+#usertable
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	height: 50px; 
+	text-align: center;
+	margin : auto;
+}
+
+td
+{
+	text-align:center;
+}

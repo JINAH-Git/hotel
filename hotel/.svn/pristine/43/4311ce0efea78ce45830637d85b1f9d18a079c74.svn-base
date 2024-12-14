@@ -1,0 +1,358 @@
+<!-- 
+작성자: 유수민
+작성일: 23.07.4.화 
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/resv.css" />
+		<script src="/hotel/js/includeHTML.js"></script>
+	</head>
+	<style>
+		/*인덱스 이미지 슬라이드 위치 지정 코드*/
+		.slider
+		{
+		    width: 1920px;
+		    height: 650px;
+		    position: relative;
+		    overflow: hidden;
+		    margin: 0 auto;
+		}
+
+		.slider input[type=radio]
+		{
+		    display: none;
+		}
+		/*인덱스 이미지 슬라이드 목록 정의*/
+		ul.imgs
+		{
+		    padding: 0;
+		    margin: 0;
+		}
+		ul.imgs li
+		{
+		    position: absolute; /* 슬라이드가 겹쳐서 모여야 하므로 absolute 속성으로 배치 */
+		    opacity: 0; /* 체크한 라디오박스 순서의 슬라이드만 표시되도록 기본 투명도 설정 */
+		    list-style: none;
+		    padding: 0;
+		    margin: 0;
+		}
+		/*인덱스 이미지 슬라이드 클릭 라벨*/
+		.bullets
+		{
+		    position: absolute;
+		    left: 50%; /* 가로로 가운데 정렬 */
+		    transform: translateX(-50%);
+		    bottom: 20px; /* 슬라이드 밑에서 20px 간격 띄움 */
+		    z-index: 2; /* 슬라이드 위에 보이도록 레이어 순위를 높임 */
+		}
+		.bullets label
+		{
+		    display: inline-block; /* 한 줄로 불릿 나열*/
+		    border-radius: 50%; /* 원형 불릿으로 처리 */
+		    background-color: rgba(0,0,0,0.55);
+		    width: 20px; /* 불릿 너비 */
+		    height: 20px; /* 불릿 높이 */
+		    cursor: pointer;
+		}
+				
+		/* 현재 선택된 불릿 배경 흰색으로 구분 표시 */
+		.slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1)
+		{
+		    background-color: #fff;
+		}
+		.slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2)
+		{
+		    background-color: #fff;
+		}
+		.slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3)
+		{
+		    background-color: #fff;
+		}
+		/*인덱스 이미지 슬라이드 전환 효과*/
+		.slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1)
+		{
+		    opacity: 1;
+		    transition: 1s;
+		    z-index: 1;
+		}
+		.slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2)
+		{
+		    opacity: 1;
+		    transition: 1s;
+		    z-index: 1;
+		}
+		.slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3)
+		{
+		    opacity: 1;
+		    transition: 1s;
+		    z-index: 1;
+		}
+		/*인덱스 이미지 슬라이드 움직임을 부드럽게 진행*/
+		ul.imgs li
+		{
+		    position: absolute;
+		    opacity: 0;
+		    list-style: none;
+		    padding: 0;
+		    margin: 0;
+		    transition-delay: 0.9s; /* 트랜지션 지연 시간 지정 */
+		}
+		
+		/* 예약 폼 감싼 div 위치 잡기*/
+		#resv
+		{
+			/*border: 2px solid red;*/
+			display: inline-block;
+			margin: 0 auto;
+			position:absolute;
+			width: 1000px;
+			left: 100px;
+			height: 110px;
+		}
+
+		/* dining & service 부분 영역 잡기*/
+		#serviceimg
+		{
+			/*border: 2px solid green;*/
+			width: 1000px;
+			height: 900px;
+			position: absolute;
+			top: 200px;
+			left: 100px;
+			background-color: #fff;
+			z-index: 2;
+		}
+		
+		/*다이닝 이동 영역*/
+		#todining
+		{
+			/*border: 2px solid pink;*/
+			width: 1000px;
+			height: 400px;
+			left: 0px;
+			position: absolute;
+		}
+		
+		/*객실 소개 이동 영역*/
+		#torooms
+		{
+			/*border: 2px solid skyblue;*/
+			width: 490px;
+			height: 300px;
+			top: 550px;
+			left: 0px;
+			position: absolute;
+		}
+		
+		/*오시는 길 이동 영역*/
+		#tomap
+		{
+			/*border: 2px solid yellow;*/
+			width: 490px;
+			height: 300px;
+			top: 550px;
+			left: 510px;
+			position: absolute;
+		}
+		
+		/*메인 화면 크기 조정*/
+		.main
+		{
+			/*border: 2px solid blue;*/
+			width: 1200px;
+			height: 1150px;
+			margin: 0 auto;
+			position: relative;
+		}
+		/* 예약 클릭시 옵션 뜨는 위치 조정 */
+		#option
+		{
+			height: 300px;
+			position: absolute;
+			background-color: #fff;
+			z-index: 10;
+			top: -300px;
+		}
+	</style>
+	<script>
+		<!-- 예약 클릭시  -->
+		function resvOption()
+		{
+			var con = document.getElementById("option");
+			var room1 = document.getElementById("room1");
+			var room2 = document.getElementById("room2");
+			var addBtn = document.getElementById("addBtn");
+			
+		   	if(con.style.display =='none')
+		   	{ 		
+		    	con.style.display = 'block';
+		    	addBtn.style.width = '60px';  
+		    }else
+		    { 		
+		    	con.style.display = 'none'; 
+		    	room2.style.opacity = '0.3';
+		    } 
+		}
+		
+		function addRoom()
+		{
+			room2.style.opacity = '1';
+		}
+		
+		function readContents()
+		{
+			var con2 = document.getElementById("contents");
+			
+			if(con2.style.display =='none')
+		   	{ 		
+		    	con2.style.display = 'block';
+		    }else
+		    { 		
+		    	con2.style.display = 'none'; 
+		    } 
+		}
+		
+		/* 이미지 자동 슬라이드  해당 기능은 jquery로 구현하는게 간편할듯*/
+	</script>
+	<header include-html="/hotel/include/head.html"></header>
+	<!-- 컨텐츠 시작하는 부분 -->
+	<section>
+		<!-- 이미지 슬라이드 소스 코드 -->
+		<div class="slider" val="1" max="3">
+		    <input type="radio" name="slide" id="slide1" checked>
+		    <input type="radio" name="slide" id="slide2">
+		    <input type="radio" name="slide" id="slide3">
+		    <ul id="imgholder" class="imgs">
+		        <li><img class="slider1" src="/hotel/image/mainimg01.jpg"></li>
+		        <li><img class="slider1" src="/hotel/image/mainimg2.jpg"></li>
+		        <li><img class="slider1" src="/hotel/image/mainimg3.jpg"></li>
+		    </ul>
+		    <div class="bullets">
+		        <label for="slide1">&nbsp;</label>
+		        <label for="slide2">&nbsp;</label>
+		        <label for="slide3">&nbsp;</label>
+	   		</div>
+		</div>
+	</section>
+	<section>
+		<div class="main" >
+			<!-- 예약 검색 바 -->
+			<div id="resv">
+				<form name="resvFrm" id="resvFrm">
+					<table id="resvtb">
+						<tr>
+							<th width="150px;">체크인</th>
+							<th><img src="/hotel/image/moon.png" width="12px" height="12px"></th>
+							<th width="150px;">체크아웃</th>
+							<th width="100px;">객실</th>
+							<th width="100px;">성인</th>
+							<th width="100px;">어린이<img src="/hotel/image/bang.png" width="12px" height="12px" title="37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)"></th>
+							<th width="100px;">유아<img src="/hotel/image/bang.png" width="12px" height="12px" title="36개월 이하 (베트남 : 만 5세 이하)"></th>
+							<th width="130px;" rowspan="2"><input type="button" value="검색" id="searchBtn" onclick="location.href='/hotel/resv/doresv/step1.html'"></th>
+						</tr>
+						<tr>
+							<td>2023.07.03(월)</td>
+							<td>2박</td>
+							<td>2023.07.05(수)</td>
+							<td onclick="resvOption()">1</td>
+							<td onclick="resvOption()">1</td>
+							<td onclick="resvOption()">0</td>
+							<td onclick="resvOption()">0</td>
+						</tr>
+					</table>
+				</form>
+				<div id="option">
+					<div id="room1">
+						<span class="room">객실 1</span> 
+						<span class="adult">
+							성인 &nbsp; &nbsp; 
+							<input type="button" value="-"> &nbsp; 
+							<input type="text" value="1" name="adult" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.adult -->
+						<span class="child">
+							어린이 &nbsp; &nbsp; 
+							<input type="button" value="-"> &nbsp; 
+							<input type="text" value="0" name="child" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.child -->
+						<span class="kid">
+							유아 &nbsp; &nbsp; 
+							<input type="button" value="-"> &nbsp; 
+							<input type="text" value="0" name="kid" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.kid -->
+					</div>
+					<hr>
+					<!-- //#room1 -->
+					<div id="room2">
+						<span class="room">객실 2</span>
+						<span class="adult">
+							성인 &nbsp; &nbsp; 
+							<input type="button" value="-"> 
+							&nbsp; <input type="text" value="1" name="adult" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.adult -->
+						<span class="child">
+							어린이 &nbsp; &nbsp; 
+							<input type="button" value="-"> &nbsp; 
+							<input type="text" value="0" name="child" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.child -->
+						<span class="kid">
+							유아 &nbsp; &nbsp; 
+							<input type="button" value="-"> &nbsp; 
+							<input type="text" value="0" name="kid" readonly>
+							<input type="button" value="+">
+						</span>
+						<!-- //.kid -->
+						<span id="addBtn" onclick="addRoom()">+추가</span>
+						<!-- //#addBtn -->
+					</div>
+					<!-- //#room2 -->
+					<hr>
+					<p class="guide">
+						객실은 최대 2개까지 선택 가능합니다.<br>
+						※어린이 : 37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)<br>
+						※유아 : 36개월 이하 (베트남 : 만 5세 이하)
+					</p>
+					<hr id="hr2">
+				</div>
+			</div>
+			<!-- 이미지 소개 부분 -->
+			<div id="serviceimg">
+				<h1 style="text-align:center;">Dining &amp; Service</h1>
+				<h4 style="text-align:right;">&#43; &nbsp; <a href="/hotel/info/service/">더보기</a></h4>
+				<div id="todining">
+					<a href="/hotel/info/service/">
+					<img src="/hotel/image/todining.jpg" width="1000px" height="400px">
+					</a>
+				</div>
+				<div id="torooms">
+					<a href="/hotel/info/roominfo/">
+					<img src="/hotel/image/torooms.jpg" width="490px" height="300px">
+					</a>
+				</div>
+				<div id="tomap">
+					<a href="/hotel/info/map/">
+					<img src="/hotel/image/tomap.jpg" width="490px" height="300px">
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- //.main -->
+	</section>
+	<!--  컨텐츠 끝나는 부분 -->
+	<footer include-html="/hotel/include/tail.html" ></footer>
+	<script>
+	   includeHTML();
+	</script>
+</html>

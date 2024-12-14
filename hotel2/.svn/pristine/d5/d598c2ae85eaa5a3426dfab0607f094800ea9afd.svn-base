@@ -1,0 +1,179 @@
+<!-- 
+작성자: 유수민
+작성일: 23.06.30.금 
+작성일: 23.07.06.목 
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>   
+<%@ include file="../../include/head.jsp"%>
+<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+<link rel="stylesheet" type="text/css" href="../../style/admuser.css" />
+<!-- 컨텐츠 시작하는 부분 -->
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>관리자 페이지</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../userctrl/" style="background-color: yellow; padding: 0 30px;">회원 정보 관리</a></li>
+				<li><a href="../pricectrl/">객실 가격 관리</a></li>
+				<li><a href="../resvctrl/">객실 예약 조회</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>회원 정보 관리</h3>
+			<p class="list"><img src="../../image/home.png" width="20px;" height="20px;"> &gt; 관리자 페이지 &gt; 회원 정보 관리</p>
+			<br>
+			<hr>
+		<table border="0">
+			<tr>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td>
+				<table id="usertable" border="1">
+					<tr style="background-color:#F3DEBA; font-weight:bold;">
+						<td width="180px">이메일</td>
+						<td width="150px">영문 이름</td>
+						<td width="80px">한글 이름</td>
+						<td width="90px">생년월일</td>
+						<td width="70px">성별</td>
+						<td width="70px">내국인<br>º<br> 외국인</td>
+						<td width="120px">핸드폰 번호</td>
+						<td width="80px">가입일</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>gildong@naver.com</td>
+						<td>Gildong Hong</td>
+						<td>홍길동</td>
+						<td>1980.08.08</td>
+						<td>Male</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>gildong@naver.com</td>
+						<td>Gildong Hong</td>
+						<td>홍길동</td>
+						<td>1980.08.08</td>
+						<td>Male</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>gildong@naver.com</td>
+						<td>Gildong Hong</td>
+						<td>홍길동</td>
+						<td>1980.08.08</td>
+						<td>Male</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>gildong@naver.com</td>
+						<td>Gildong Hong</td>
+						<td>홍길동</td>
+						<td>1980.08.08</td>
+						<td>Male</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>	
+					<tr style="height:45px;">
+						<td>chunhang@naver.com</td>
+						<td>Chunhang Sung</td>
+						<td>성춘향</td>
+						<td>1980.08.08</td>
+						<td>Female</td>
+						<td>내국인</td>
+						<td>010-8282-8282</td>
+						<td>2023.06.30</td>
+					</tr>							
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td>이전 | 1 | 2 | 3 | 4 | 5 | 다음</td>
+			</tr>
+			<tr>
+				<td><br></td>
+			</tr>	
+			<tr>
+				<td>
+				<select name="items">
+					<option>이메일</option>
+					<option>이름</option>
+					<option>생년월일</option>
+					<option>번호</option>
+				</select>
+				<input type="text" placeholder="검색어를 입력하세요">
+				&nbsp;&nbsp;
+				<input type="button" value="검색">
+				</td>
+			</tr>
+		</table>
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+<!--  컨텐츠 끝나는 부분 -->
+<%@ include file="../../include/tail.jsp"%>

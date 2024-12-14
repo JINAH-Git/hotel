@@ -1,0 +1,107 @@
+@charset "EUC-KR";
+.main
+		{
+		    width: 1200px;
+		    min-height: 100%;
+		    padding: 53px 0 0 0;
+		    margin: 20px auto;
+		    position: relative;
+		}
+		/* 아이디 비밀번호 전체 */
+		.logintotal
+		{
+			padding: 63px 50px;
+			text-align:center;
+		}
+		#userid
+		{
+			background-color: #f9f9f9;
+		    width: 50%;
+		    height: 65px;
+		    padding: 20px;
+		    border: none;
+		    margin-bottom: 15px;
+		}
+		#userpw
+		{
+			background-color: #f9f9f9;
+		    width: 50%;
+		    height: 65px;
+		    padding: 20px;
+		    border: none;
+		}
+		#checkidboxfrm
+		{
+			display: block;
+    		margin: 16px 0 7px;
+    		text-align:center;
+    		position:absolute;
+    		left:305px;
+    		margin-top:20px;
+		}
+		#login_button
+		{
+		    margin: 60px 0 15px;
+		    padding: 0;
+		    font-size: 22px;
+		    font-weight: 500;
+		    line-height: 66px;
+	        background-color: #000 !important;
+    		color: #fff !important;
+    		width: 53%;
+		    height: 65px;
+		}
+		#loginlink
+		{
+			 background-color: red;
+		}
+		#login_join
+		{
+			 position: absolute;
+			 padding-right: 17px;
+			 background: transparent;
+	       	 left: 310px;
+	   		 font-size: 15px;
+	      	 color: inherit;
+	   		 text-decoration: none;      
+		}
+		#pw_find
+		{
+			position: absolute;
+			left: 450px;
+			padding-right: 17px;
+	        font-size: 15px;
+	        color: inherit;
+    		text-decoration: none;
+		}
+		#txtGuide
+		{
+		    width: 1200px;
+		    height: 65px;
+		    padding: 20px;
+ 		    position: relative;
+		}
+		/* 로그인 표지 전체 */
+		.introduction
+		{
+			width:300px;
+			height:50px;
+			text-align: center;
+		}
+		/* 로그인 표지 SIGN IN */
+		.introhead
+		{
+			
+			text-align: left;
+			font-size:15px;
+			margin-left:15px;
+		}
+		.introtext 
+		{
+			margin-left:15px;
+		}
+		.line
+		{
+			border 1px solid;
+			margin: 0px;	
+		}

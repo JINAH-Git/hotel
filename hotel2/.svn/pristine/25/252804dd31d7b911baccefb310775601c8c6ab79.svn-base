@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.vo.*" %>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%
+String newpw = request.getParameter("pw");
+
+UserDTO dto = new UserDTO();
+UserVO vo = new UserVO();
+
+
+
+dto.pwchange(vo);
+
+
+response.sendRedirect("login.jsp");
+%>

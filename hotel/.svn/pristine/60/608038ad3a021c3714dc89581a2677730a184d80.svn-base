@@ -1,0 +1,155 @@
+<!-- 
+23-06-30 성재 | 작성함.
+23-07-03 성재 | 수정함.
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>이벤트</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/main.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/menubar.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+	</head>
+	<body>
+		<style>
+			.headtype
+			{
+				text-align:center;
+			}
+			.event_inner
+			{
+				width:700px;
+				height:850px;
+				margin:85px;
+			}
+			.event_write
+			{
+				position:absolute;
+				right:0;
+				top:50px;
+				width:650px;
+				height:100px;
+				margin:85px;
+			}
+			.event_slt
+			{
+				position:absolute;
+				bottom:50px;
+				width:700px;
+				height:800px;
+			}
+			.event_slt > li
+			{
+				margin-left:30px;
+			}
+		</style>
+		<div class="head">
+			<div class="header">
+				<h1 class="logo">
+					<a href="/hotel/index.html">Ezen <br> Hotels & Resorts</a>
+				</h1>
+				<span class="loginArea">
+					<a href="/hotel/user/login.html">로그인</a>&nbsp;|
+					<a href="/hotel/user/join.html">회원가입</a>&nbsp;|
+					<a href="/hotel/resv/confirm.html">예약 확인</a>
+				</span>
+				<!-- //.loginArea -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<a href="/hotel/resv/doresv.html">예약</a>
+							<img src="/hotel/image/calender.png" width="20px;" height="20px;">
+						</li>
+						<li>
+							<a href="/hotel/info/map">호텔 소개</a>
+						</li>
+						<li>
+							<a href="/hotel/faq/question">고객 문의</a>
+						</li>
+						<li>
+							<a href="/hotel/promotion/event">프로모션</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			<div class="menubar">
+				<h2>프로모션</h2>
+				<hr>
+				<ul class="menu">
+					<li><a href="/hotel/promotion/event/" style="background-color: yellow; padding: 0 30px;">이벤트</a></li>
+					<li><a href="/hotel/promotion/review/">리뷰</a></li>
+				</ul>
+				<!-- //.menu -->
+			</div>
+			<!-- //.menubar -->
+			<div class="contents">
+				<h3>이벤트</h3>
+				<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 프로모션 &gt; 이벤트</p>
+				<hr>
+				<div class="event_inner">
+					<div class="event_write">
+						<span style="float:right;">
+							<a href="write.html">글쓰기</a>
+						</span>
+					</div>
+					<!-- //.event_write -->
+					<ul class="event_slt">
+						<li>
+						<a href="view.html"><img src="/hotel/image/event.png" width="309px;" height="251px;" /></a>
+						<a href="view.html"><img src="/hotel/image/event.png" width="309px;" height="251px;" /></a>
+						</li>
+						<li>
+						<a href="view.html"><img src="/hotel/image/event.png" width="309px;" height="251px;" /></a>
+						<a href="view.html"><img src="/hotel/image/event.png" width="309px;" height="251px;" /></a>
+						</li>
+					</ul>
+					<!-- //.event_slt -->
+				</div>
+				<!-- //.event_inner -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<div class="tail">
+			<div class="localBox">
+				<img src="/hotel/image/hotel.jpg" width="170px" height="170px">
+				<div class="brandInfo">
+					<dl class="brand">
+						<dt><a href="#">HOTEL1</a></dt>
+						<dt><a href="#">HOTEL2</a></dt>
+						<dt><a href="#">HOTEL3</a></dt>
+					</dl>
+				</div>
+				<!-- //.brand -->
+				<div class="info">
+					<dl class="introduction">
+						<dd>호텔이젠 소개</dd>
+						<dd>호텔 개발</dd>
+						<dd>고객문의</dd>
+						<dd>사이트맵</dd>
+					</dl>
+					<!-- //.introduction -->
+					<dl class="hotelInfo">
+						<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+						<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+					</dl>
+					<!-- //.hotelInfo -->
+				</div>
+				<!-- //.info -->
+			</div>
+			<!-- //.localBox -->
+			<div class="footer">
+			</div>
+			<!-- //.footer -->
+		</div>
+		<!-- //.tail -->
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+23-07-12 성재 | jsp 수정함.
+writeok, modifyok에서 파일크기 지정 부분 오류발생
+해결해야함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ include file="../../include/head.jsp" %>
+<%@ include file="../../include/config.jsp" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%
+request.setCharacterEncoding("euc-kr");
+System.out.println("오류발생1");
+
+//업로드가 가능한 최대 파일 크기를 지정한다.
+int size = 10 * 1024 * 1024;
+MultipartRequest multi = 
+	new MultipartRequest(request,uploadPath,size,
+		"EUC-KR",new DefaultFileRenamePolicy());
+System.out.println("오류발생2");
+
+String category = multi.getParameter("category");
+String curPage  = multi.getParameter("page");
+System.out.println("오류발생3");
+
+BoardVO vo = new BoardVO();
+vo.setBtitle(multi.getParameter("no"));
+vo.setBtitle(multi.getParameter("btitle"));
+vo.setCategory(multi.getParameter("category"));
+vo.setBnote(multi.getParameter("bnote"));
+System.out.println("오류발생4");
+
+//업로드된 파일명을 얻는다. (논리파일명)
+vo.setBfname((String)multi.getFilesystemName("attach"));
+//랜덤한 문자열을 생성한다. (물리파일명)
+vo.setBpname((String)UUID.randomUUID().toString());
+System.out.println("오류발생5");
+
+if(vo.getBfname() != null)
+{
+	//논리파일명을 물리파일명으로 파일명을 변경한다.
+	String srcName = uploadPath + "/" + vo.getBfname();
+	System.out.println(srcName);
+	String targetName = uploadPath + "/" + vo.getBpname();
+	System.out.println(targetName);
+	File srcFile    = new File(srcName);
+	File targetFile = new File(targetName);
+	srcFile.renameTo(targetFile);
+	System.out.println("오류발생6");
+}else
+{
+	vo.setBfname("");
+	vo.setBpname("");
+}
+System.out.println("오류발생7");
+
+BoardDTO dto = new BoardDTO();
+dto.modify(vo);
+
+response.sendRedirect("view.jsp?page=" + curPage + "&category=" + category + "&no=" + vo.getBno());
+%>

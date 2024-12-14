@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<%
+request.setCharacterEncoding("euc-kr");
+
+String bno     = request.getParameter("bno");
+String rnote   = request.getParameter("rnote");
+String rwriter = request.getParameter("rwriter");
+
+ReplyVO vo = new ReplyVO();
+vo.setBno(Integer.parseInt(bno));
+vo.setRwriter(login.getKname());
+vo.setRnote(rnote);
+
+ReplyDTO dto = new ReplyDTO();
+dto.insert(vo);
+
+response.sendRedirect("view.jsp?bno=" + vo.getBno() + "&rno=" + vo.getBno());
+%>

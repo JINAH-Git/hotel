@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- 
+김진아/23.06.30.금, 23.07.03.월, 23.07.05.수, 23.07.12.수/회원가입 html 잡기, 2. 이어서 틀 잡기 3.include영역 정리
+유수민/ 23.07.17.월 / 비밀번호 변경에서 넘어오기
+ -->
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%@ page import="hotel.vo.*" %> 
+<%@ page import="hotel.email.*" %> 
+<%
+request.setCharacterEncoding("euc-kr");
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria | 회원정보 변경</title>
+		<link rel="stylesheet" href="../style/userinfochange.css">
+	</head>
+<%@include file="../include/head.jsp" %>
+<section>
+	<div class="main">
+	<!-- 필수정보 입력란 -->
+		<div>
+			<h2 class="necesse">회원정보 변경</h2>
+		</div>
+		<!-- 필수정보 입력 시작 -->
+		<form method="post" name="joinintrofrm" action="/hotel2/user/userinfochangeok.jsp" style="height: 500px;"> 
+			<div class="infodostart">		
+				<!-- 비밀번호, 비밀번호 확인 5,6 입력 커멘트 시작 -->
+				<div class="infodovalue5" style="margin-top: 200px;">PASSWORD *</div>
+				<div class="infodovalue6" style="margin-top: 200px;">CONFIRM PASSWORD *</div>
+				<!-- 비밀번호, 비밀번호 확인 입력 커멘트 끝 -->
+				<br>
+				<!-- 비밀번호, 비밀번호 확인 입력 구간 시작 -->
+				<div class="password" style="margin-top: 200px;" >
+					<input type="password" class="pw" placeholder="새 비밀번호">
+					<input type="password" class="pwcheck" placeholder="새 비밀번호 확인"><br>
+					<input type="button" class="joinbutton" value="비밀번호 변경" style="position: relative; top: 100px; left: 150px;"><br>				
+				</div>
+				<!-- 비밀번호, 비밀번호 확인 입력 구간 끝 -->	
+			</div>
+		</form>
+		<!-- 필수정보 입력 끝 -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@include file="../include/tail.jsp" %>

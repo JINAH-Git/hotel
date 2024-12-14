@@ -1,0 +1,698 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- 
+작성자: 김진아
+작성일: 23.06.30.금, 23.07.03.월, 23.07.05.수
+1. 회원가입 html 잡기, 2. 이어서 틀 잡기
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria Hotel & Resort</title>
+	</head>
+	<style>
+		.main
+		{
+			width: 1200px;
+			margin: 53px auto;
+		}
+		/* 1 본인 인증, 2 약관동의 및 회원정보 단계 표시 시작  */
+    	.stepwrap 
+    	{
+		    position: absolute;
+		    margin: 8px auto;
+		    display:inline-block;
+		    width:1200px;
+		    height:35px;
+		}
+		.stepwrapline-solid
+		{
+			border:1.5px;
+			border-top: 1.5px solid gray;
+			width:25px;
+		}
+		.txtbox 
+		{
+			background-color:#f9f9f9;
+			padding: 63px 50px;
+			text-align:center;
+			margin-top: 50px;
+		}
+		.txtboxtitle
+		{
+			font-size:24px;
+		    line-height: 38px;
+		    font-weight: 500;
+		    letter-spacing: -.025em;
+		    text-align: center;
+		}
+		#join_btn
+		{
+			margin: 15px 0 15px;
+		    padding: 10;
+		    font-size: 18px;
+		    font-weight: 15;
+		    line-height: 60px;
+	        background-color: #000 !important;
+    		color: #fff !important;
+		    height: 65px;
+		}
+		#on
+		{
+			 background-color: RED;
+		}
+		/* 회원가입 표지 시작 */
+		.introduction
+		{
+			width:1200px;
+			height:150px;
+			border: 1px solid #F9F9F9;
+		}
+		.introhead
+		{
+			width:1400px;
+			text-align: left;
+			font-size:35px;
+		}
+		/* Alegria 오신 것을 환영합니다. 문구 */
+		.introtext
+		{
+		   display: block;
+		   margin-block-start: 1em;
+		   margin-block-end: 1em;
+		   margin-inline-start: 0px;
+		   margin-inline-end: 0px;
+	       font-family: notokrL, gothamL, playfair;
+	       margin-left:38px;
+		}
+		.first
+		{
+			width:10%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 65px;
+		}
+		.second
+		{
+			width:10%;
+			box-sizing: border-box;
+	     	position:absolute;
+			top: 0;
+			left: 165px;
+		}
+		
+		.third
+		{
+			width:20%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 340px;
+		}
+		.firstimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:white;
+			color:gray;
+			font-weight: bold;
+			position:absolute;
+			top: 0;
+			left: 44px;
+		}
+		.thirdimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:black;
+			color:white;
+			font-weight: bold;
+			border: 1px solid gray;
+			position:absolute;
+			top: 0;
+			left: 320px;
+		}
+		/* 회원가입 약관 시작 */
+		.joindostart
+		{
+			height:830px;
+			background-color: white;
+			position: relative;
+		    box-sizing: content-box;
+		    border: 1px soild gray;
+		    padding: 30px 50px;
+		    margin-top: 40px;
+		}
+		.jointotalline
+		{
+			margin-top:40px;
+			border: 1px thin gray;
+		}
+		.joindochecktext1
+		{
+			padding-left: 30px;
+		}
+		.jointotalline2
+		{
+			border: 1px thin gray;
+		}
+		.joindochecktext2
+		{
+			padding-left: 30px;
+		}
+		/* 커멘트 */
+		.joindochecktext3
+		{
+			padding-left: 10px;
+		}
+		/* 회원가입 약관, 필수정보 입력 전체 시작 */ 
+		.jointotal
+		{
+			width: 1200px;
+		}
+		.table1 
+		{
+			text-align: center;		
+			margin: 0 10px;
+			border-collapse: collapse;
+		}
+		.table1 tr
+		{
+			padding: 16px;
+		    font-size: 17px;
+		    border-top: 1px solid #000;
+		    border-bottom: 1px solid #ccc;
+		    text-align: center;
+		    text-transform: uppercase;
+		    font-family: gothamM, notokrM;
+		    color: #333;
+		    background-color:#FFFFFF;
+		}
+		.table td
+		{
+			font-
+		}
+		.table2
+		{
+			margin-left:20px;
+			width:1060px;
+			heigth:40px;
+			text-align:center;
+			border-collapse: collapse;
+		}
+		
+		/*  */
+		.joindochecktexthead1
+		{
+			background-color: #F9F9F9;
+		}
+		/*  */
+		.joindochecktexthead2
+		{
+			background-color: #F9F9F9;
+			
+		}
+		/* 필수정보 입력 전체 */
+		.infodostart 
+		{
+			border:3px solid #F9F9F9;
+			height:800px;
+		}
+		.infodostart span
+		{
+			font-size:10;
+		}
+		/* 필수정보 입력란  */
+		.necesse
+		{
+			width:1100px;
+			margin-left: 45px;
+		}
+		/* 영문성명 코멘트 */
+		.infodovalue1 
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 250px;
+			
+		}
+		/* KOREAN NAME 코멘트 */
+		.infodovalue2
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 680px;
+		}
+		.englishname
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 150px;
+		}
+		
+		.koreanname
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 175px;
+		}
+		.name
+		{
+			margin-left: 95px;
+		}
+		/* 생년월일 커멘트 */
+		.infodovalue3
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-left: 250px;
+			margin-top:20px;
+		}
+		/* 생년월일 SELECT 구간 */
+		.birth
+		{
+			margin-left: 250px;
+			width: 200px;
+		    height: 10px;
+		}
+		/* 이메일 코멘트 */
+		.infodovalue4
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-top:30px;
+			margin-left: 250px;
+		}
+		/* 이메일 입력 구간 */
+		.emailid
+		{
+		   background-color:white;
+		   width: 620px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 250px;
+		}
+		/* 비밀번호 코멘트 구간 */
+		.infodovalue5
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+			margin-left: 250px;
+		}
+		/* 비밀번호 확인 코멘트 구간 */
+		.infodovalue6
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 680px;
+		}
+		/* 비밀번호 입력 구간 */
+		.pw 
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 245px;
+		}
+		.pwcheck
+		{
+		   background-color:white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 175px;
+		}
+		/* gender 코멘트 */
+		.infodovalue7
+		{
+			color:#B01414;
+			display:inline-block;
+			position: absolute;
+			margin-left: 250px;
+		}
+		/* 내국인, 외국인 코멘트 */
+		.infodovalue8
+		{
+			color:#B01414;
+			padding-left: 280px;
+			display:inline-block;
+			position: absolute;
+			padding-left: 670px;
+		}
+		/* 성별 div 영역 */
+		.gender
+		{
+		   width: 300px;
+		   height: 10px;
+		   padding: 10px;
+		   margin-bottom: 25px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       position:absolute;
+	       margin-left: 250px;	
+	       display:inline-block;
+		}
+		/* 내국인, 외국인 div영역 */
+		.koreanforeigner
+		{
+		   width: 300px;
+		   height: 10px;
+		   padding: 10px;
+		   margin-bottom: 25px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       display:inline-block;
+	       position:absolute;
+	       margin-left: 650px;	
+		}
+		/* NUMBER 코멘트 */
+		.infodovalue9
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-top: 38px;
+			margin-left: 250px;
+		}
+		
+		/* 번호 입력 테스트 구간 */
+		.numbertext
+		{
+		   background-color: white;
+		   width: 620px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 250px;
+		}
+		/* 회원가입, 취소 버튼 전체 */
+		.joincancelstart
+		{
+			background-color: white;
+			margin-top:30px;
+		}
+		.joinbutton
+		{
+		    min-width: 190px;
+		    height: 60px;
+		    padding: 0 25px;
+		    line-height: 58px;
+		    font-size: 18px;
+		    letter-spacing: -.01em;
+	        background: #000 !important;
+   			color: #fff !important;
+   			position:absolute;
+   			margin-left:366px;
+		}
+		.cancelbutton
+		{
+			min-width: 190px;
+		    height: 60px;
+		    padding: 0 25px;
+		    line-height: 58px;
+		    font-size: 18px;
+		    letter-spacing: -.01em;
+	        color: #000;
+   			border: 1px solid #000;
+    		background: #fff;
+    		position:absolute;
+    		margin-left:625px;
+		}
+		/* sms 수신동의 e-mail수신동의, 우편물   */
+		.joindocheckbox
+		{
+			margin-bottom: 10px;
+		}
+	</style>
+	<body>
+	<%@include file="../include/head.jsp" %>
+	<section>
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			<!-- 회원가입 표지 시작 -->
+			<div class="introduction">
+				<h1 class="introhead"> &nbsp; &nbsp; JOIN</h1>
+				<div class="introtext"><p> &nbsp; Alegria 오신 것을 환영합니다.</p></div>	
+			</div>	
+			<!-- 회원가입 표지 끝 -->
+			<!-- 1 본인 인증, 2 약관동의 및 회원정보 단계 표시 시작-->
+			<div class="stepwrap">
+				<div class="firstimge">1</div>
+				<div class="first"> &nbsp;&nbsp; 본인 인증 </div>
+				<div class="second"><hr class="stepwrapline"></div>
+				<div class="thirdimge">2</div>	
+				<div class="third"> &nbsp;&nbsp;&nbsp; 약관동의 및 회원정보 입력</div>	 
+			</div>
+			<!-- 1 본인 인증, 2 약관동의 및 회원정보 단계 표시 끝-->
+			<!--  회원가입 약관, 필수정보 입력 전체 시작-->
+			<div class="jointotal">
+				<!-- 회원가입 약관 시작 -->
+				<div class="joindostart">
+					<div class="joindostarthead"><h2>회원가입 약관</h2></div>
+					<div class="joindostarttext">
+						Alegert는 체계적인 회원 정보 관리를 위하여 아래와 같이 개인정보를 수집·이용 및 제공하고자 합니다.<br>
+						내용을 자세히 읽으신 후 동의 여부를 결정하여 주시기 바랍니다.
+					</div>
+					<hr class="jointotalline">
+					<!-- 구분 체크 박스 바로 위 -->
+					<!-- 회원가입 약관 시작 -->
+					<input type="checkbox" id="checkbox1">
+						<label for="checkbox1">전체동의</label>
+						<p class="joindochecktext1">
+						아래 동의 항목을 개별 확인 후 각 항목마다 개별적으로 동의하실 수 있습니다.<br>
+						전체 동의 시 체크되는 동의 항목에는 선택동의 항목이 포함되어 있습니다.
+						</p>
+						<hr class="jointotalline2">
+						<input type="checkbox" id="checkbox2">
+						<!-- 개인 정보 수집 및 이용에 대한 동의 시작-->
+						<label for="checkbox2">[필수] 개인정보 수집 및 이용에 대한 동의</label>
+							<!-- 개인정보 수집 및 이용에 대한 동의 안에 내용 시작 -->
+							<div class="joindochecktexthead1">
+								<p class="joindochecktext2">
+								Alegert는 아래와 같은 개인정보를 수집 및 이용하고 있습니다.<br>
+								개인정보 처리에 대한 상세한 사항은 Alegert 홈페이지의 '개인정보처리방침'을 참조하십시오.
+								<br>
+								<br>
+								본 개인정보 수집 및 이용 동의서의 내용과 상충되는 부분은 본 동의서의 내용이 우선합니다.
+								</p>
+								<!-- 개인 정보 수집 및 이용에 대한 동의 끝 -->
+								<!-- table 시작 -->
+								<table border="1" class="table1">
+									<tr>
+										<th>수집 항목</th>
+										<th>수집 목적</th>
+										<th>보유 기간</th>
+									</tr>
+									<tr>
+										<td>회원 ID, 비밀번호, 이름, 생년월일, 국적, 성별, 휴대폰 번호</td>
+										<td>서비스 이용자 식별 및 본인, 14세 이상 여부 확인</td>
+										<td rowspan="3" style="text-decoration: underline;"><b>회원 탈퇴 또는 5년간 이용 실적 없을 시</b></td>
+									</tr>
+									<tr>
+										<td>휴대폰 번호, 이메일 주소</td>
+										<td>계약 이행을 위한 연락 및 민원업무 처리 등의 의사소통</td>
+									</tr>
+									<tr>
+										<td>주소</td>
+										<td>멤버십 카드발송</td>
+									</tr>
+								</table>
+								<!-- table 끝 -->
+								<p class="joindochecktext3"> * 위의 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있으나 동의를 거부하실 경우 회원가입, 멤버십 서비스 이용이 불가합니다.</p>
+								<hr>
+							</div>
+							<!-- 개인정보 수집 및 이용에 대한 동의 안에 내용 끝 -->
+							<!-- 마케팅 활용 및 광고성 정보 수신을 위한 개인 정보 이용 동의 -->
+							<input type="checkbox" id="checkbox3">
+							<label for="checkbox3">[선택] 마케팅 활용 및 광고성 정보 수신을 위한 개인 정보 이용 동의</label>
+							<!-- 마케팅 활용 및 광고성 정보 수신을 위한 개인 정보 이용 동의 안에 내용 시작 -->
+							<div class="joindochecktexthead2">
+								<p class="joindochecktext2"> Alegert의 회원서비스 관련 정보, 할인상품 및 신상품 안내, 이벤트 및 맞춤 서비스 정보 수신을 위해 개인정보를 수집 및 이용하는 것에 동의 합니다.</p>
+								<!-- 체크박스 시작 -->
+								<div class="joindocheckbox">
+									<input type="checkbox" value="agree1">
+										<label for="SMS 수신동의">SMS 수신동의</label>
+									<input type="checkbox" value="agree2">
+										<label for="SMS 수신동의">E-MAIL 수신동의 </label>
+									<input type="checkbox" value="agree3">
+										<label for="SMS 수신동의">우편물 수신동의 </label>
+									<input type="checkbox" value="agree4">
+										<label for="SMS 수신동의">전화 수신동의 </label>
+								</div>
+								<!-- 체크박스 끝 -->
+								<!-- 두 번째 테이블 시작 -->
+								<table border="1" class="table2">
+									<tr>
+										<th>수집 항목</th>
+										<th>수집 목적</th>
+										<th>보유 기간</th>
+									</tr>
+									<tr>
+										<td>이메일, 휴대폰번호, 주소</td>
+										<td>행사 및 상품정보 안내 / 마케팅 활동</td>
+										<td style="text-decoration: underline;"><b>회원탈퇴 또는 5년간 이용실적 없을 시</b></td>
+									</tr>
+								</table>
+								<p class="joindochecktext3">* 위 개인정보 수집·이용에 대한 동의를 거부할 수 있으나 동의 거부 시 할인 및 이벤트 정보 안내 등의 서비스가 제한됩니다.</p>
+								<hr>
+							</div>
+							<!-- 마케팅 활용 및 광고성 정보 수신을 위한 개인 정보 이용 동의 안에 내용 끝 -->
+				</div>
+				<!-- 회원가입 약관 끝 -->
+					<br>
+					<br>
+					<!-- 필수정보 입력란 -->
+					<div>
+						<h2 class="necesse">필수정보 입력</h2>
+					</div>
+					<!-- 필수정보 입력 시작 -->
+					<form method="post" name="joinintrofrm" action="joinok.jsp">
+					<div class="infodostart">
+						<!-- 영문 이름, 한글 이름 커멘트 -->
+						<div class="infodovalue1">ENGLISH NAME *</div>
+						<div class="infodovalue2">KOREAN NAME *</div>
+						<br>
+						<!-- 영문 이름, 한글 이름 입력 구간 시작 -->
+						<div class="name">
+							<input type="text" class="englishname" placeholder="영문 성명">
+							<input type="text" class="koreanname" placeholder="한글 성명">
+						</div>
+						<!-- 영문 이름, 한글 이름 입력 구간 끝 -->
+							<!-- 생년월일 입력 구간 시작 -->
+							<div class="infodovalue3">BIRTH DATE *</div>
+							<br>
+							<div class="birth">
+								<select name="yy" id="year">년</select>
+								<select name="mm" id="month">월</select>
+								<select name="dd" id="day">일</select>
+							</div>
+							<!-- 생년월일 입력 구간 끝 -->
+							<br>
+							<!-- 이메일 입력 구간 시작 -->
+							<div class="email">
+								<div class="infodovalue4">ID *</div>
+								<br>
+								<input type="text" class="emailid" placeholder="이메일">
+							</div>
+							<!-- 이메일 입력 구간 끝 -->
+							<br>
+							<!-- 비밀번호, 비밀번호 확인 5,6 입력 커멘트 시작 -->
+							<div class="infodovalue5">PASSWORD *</div>
+							<div class="infodovalue6">CONFIRM PASSWORD *</div>
+							<!-- 비밀번호, 비밀번호 확인 입력 커멘트 끝 -->
+							<br>
+							<!-- 비밀번호, 비밀번호 확인 입력 구간 시작 -->
+							<div class="password">
+								<input type="password" class="pw" placeholder="비밀번호">
+								<input type="password" class="pwcheck" placeholder="비밀번호 확인">
+							</div>
+							<!-- 비밀번호, 비밀번호 확인 입력 구간 끝 -->
+							<br>
+							<!-- 성별  입력 7,8 입력 커멘트 시작 -->
+							<div class="infodovalue7">GENDER *</div>
+							<div class="infodovalue8">KOREAN/FOREIGNER *</div>
+							<br>
+							<!-- 성별  입력 7,8 입력 커멘트 끝 -->
+							<br>
+							<!-- 성별, 내국인/외국인 구간 시작  -->
+							<div class="genderstart">
+								<!-- 성별 시작  -->
+								<div class="gender">
+									<input type="radio" id="gender1" name="gender" value="male" checked>
+										<label for="gender1">남</label>
+									<input type="radio" id="gender2" name="gender" value="female">
+										<label for="gender2">여</label>
+								</div>
+								<!-- 성별 끝-->
+								<!-- 내국인 외국인 시작 -->
+								<div class="koreanforeigner">
+									<input type="radio" id="korean" name="koreanforeigner1" value="male" checked>
+										<label for="korean">내국인</label>
+									<input type="radio" id="foreigner" name="koreanforeigner1" value="female">
+										<label for="foreigner">외국인</label>
+								</div>
+								<!-- 내국인 외국인 끝 -->
+							</div>
+							<!-- 영문 이름, 한글 이름 입력 구간 끝  -->
+							<br>
+							<!-- 핸드폰 번호 입력 구간 시작 -->
+							<div class=numberstart>
+								<!-- number 코멘트 -->
+								<div class="infodovalue9">NUMBER *</div>
+								<br>
+								<!-- 번호 입력 input 시작 -->
+								<div class="number">
+									<input type="text" class="numbertext" placeholder="전화번호">
+										<p style="text-decoration: underline;"></p>
+								</div>
+								<!-- 번호 입력 input 끝 -->
+							</div>
+							<br>
+							<!-- 회원가입, 취소 버튼 구간 시작 -->
+							<div class="joincancelstart">
+								<input type=submit value="회원가입" class="joinbutton">
+								<input type=button value="취소" class="cancelbutton" onclick="location.href='join.jsp'">
+							</div>
+							<!-- 회원가입, 취소 버튼 구간 끝 -->
+					</div>
+					</form>
+					<!-- 필수정보 입력 끝 -->
+				
+				
+			</div>
+			<!--  회원가입 약관, 필수정보 입력 전체 끝 -->
+		</div>
+		<!-- //.main -->
+		</section>
+		<%@include file="../include/tail.jsp" %>

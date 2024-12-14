@@ -1,0 +1,220 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria</title>		
+		<link rel="stylesheet" type="text/css" href="style/resv.css" />
+		<link rel="stylesheet" type="text/css" href="style/main.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="style/materialize.css"  media="screen,projection"/>
+		<script src="./js/jquery-3.7.0.js"></script>
+	</head>
+	<script>
+		<!-- 이미지 슬라이드 -->
+		$(document).ready(function(){
+			$('.slider').slider();
+		});
+		
+		/* 예약 클릭시  */
+		function resvOption()
+		{
+			var con = document.getElementById("option");
+			
+		   	if(con.style.display =='none')
+		   	{ 		
+		    	con.style.display = 'block'; 
+		    }else
+		    { 		
+		    	con.style.display = 'none'; 
+		    } 
+		}
+		
+		/* 옵션 숫자 증가,감소 */
+		function Count(type)  
+		{
+			// 결과를 표시할 element
+			var adultNum = document.getElementById('adult');
+			var childNum = document.getElementById('child');
+			var kidNum = document.getElementById('kid');
+			
+			// 현재 화면에 표시된 값
+			let num1 = adultNum.value;
+			let num2 = childNum.value;
+			let num3 = kidNum.value;
+			
+			// 성인 더하기/빼기
+			if(type == 'aplus') 
+			{
+				num1 = parseInt(num1) + 1;
+			}else if(type == 'aminus')  
+			{
+				num1 = parseInt(num1) - 1;
+				if(num1 < 1 ) 
+				{
+					alert("성인은 최소 1인이 포함되어야 합니다.");
+					num1 ++;
+					return;
+			  	}
+			}
+			
+			// 어린이 더하기/빼기
+			if(type === 'cplus') 
+			{
+				num2 = parseInt(num2) + 1;
+			}else if(type == 'cminus')  
+			{
+				num2 = parseInt(num2) - 1;
+				if(num2 < 0 )
+				{
+					num2 ++;
+					return;
+				}
+			}
+			
+			// 유아 더하기/빼기
+			if(type == 'kplus') 
+			{
+				num3 = parseInt(num3) + 1;
+			}else if(type == 'kminus')  
+			{
+				num3 = parseInt(num3) - 1;
+				if(num3 < 0 ) 
+				{
+					num3 ++;
+					return;
+				}
+			}
+		
+			if(parseInt(num1) + parseInt(num2) + parseInt(num3) > 4)
+			{
+				alert("예약은 최대 4인까지 가능합니다.");
+				return;
+			}
+			// 결과 출력
+			adultNum.value = num1;
+			childNum.value = num2;
+			kidNum.value = num3;
+		}
+		/* 이미지 자동 슬라이드  해당 기능은 jquery로 구현하는게 간편할듯*/
+	</script>
+<%@ include file="include/head.jsp" %>
+<section>
+	<!-- 이미지 슬라이드 소스 코드 -->
+	<div class="slider" style="height: 650px;">
+		<ul class="slides">
+			<li>
+				<img src="image/mainimg1.jpg">
+				<div class="caption center-align">
+					<h3 class="htitle">Rewards Signature Edition</h3>
+					<h5 class="light grey-text text-lighten-3">Alegria에서 기분 좋은 하루를 시작해보세요.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="image/mainimg2.jpg">
+				<div class="caption left-align">
+					<h3 class="htitle">Suite Room</h3>
+					<h5 class="light grey-text text-lighten-3">객실 곳곳 숨어 있는 장식 요소들로 즐거움을 전달합니다.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="image/mainimg3.jpg">
+				<div class="caption right-align">
+					<h3 class="htitle">Dining</h3>
+					<h5 class="light grey-text text-lighten-3">세계 각지의 수준 높은 요리를 더 특별하게 만나 볼 수 있습니다.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="image/mainimg4.jpg">
+				<div class="caption center-align">
+					<h3 class="htitle">Private Lounge</h3>
+					<h5 class="light grey-text text-lighten-3">아늑하고 모던한 라운지에서 비즈니스와 휴식을 동시에 취해보세요.</h5>
+				</div>
+			</li>
+		</ul>
+	 </div>
+</section>
+<section>
+	<div class="main" >
+		<!-- 예약 검색 바 -->
+		<div id="resv">
+			<form name="resvFrm" id="resvFrm" action="/hotel/resv/doresv/step1.html">
+				<table id="resvtb">
+					<tr>
+						<th width="150px;">체크인</th>
+						<th><img src="/hotel/image/moon.png" width="12px" height="12px"></th>
+						<th width="150px;">체크아웃</th>
+						<th width="100px;">객실</th>
+						<th width="100px;">성인</th>
+						<th width="100px;">어린이<img src="/hotel/image/bang.png" width="12px" height="12px" title="37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)"></th>
+						<th width="100px;">유아<img src="/hotel/image/bang.png" width="12px" height="12px" title="36개월 이하 (베트남 : 만 5세 이하)"></th>
+						<th width="130px;" rowspan="2"><input type="submit" value="검색" id="searchBtn"></th>
+					</tr>
+					<tr>
+						<td>2023.07.03(월)</td>
+						<td>2박</td>
+						<td>2023.07.05(수)</td>
+						<td onclick="resvOption()">1</td>
+						<td onclick="resvOption()">1</td>
+						<td onclick="resvOption()">0</td>
+						<td onclick="resvOption()">0</td>
+					</tr>
+				</table>
+				<div id="option">
+				<span class="room">객실</span> 
+				<span class="adult">
+					성인 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="Count('aminus')">
+					<input type="text" value="1" id="adult" name="adult" readonly style="padding:0 10px; text-align: center;"> 
+					<input type="button" value="+" onclick="Count('aplus')">
+				</span>
+				<!-- //.adult -->
+				<span class="child">
+					어린이 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="Count('cminus')"> 
+					<input type="text" value="0" id="child" name="child" readonly style="padding:0 10px; text-align: center;">
+					<input type="button" value="+" onclick="Count('cplus')">
+				</span>
+				<!-- //.child -->
+				<span class="kid">
+					유아 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="Count('kminus')">
+					<input type="text" value="0" id="kid" name="kid" readonly style="padding:0 10px; text-align: center;">
+					<input type="button" value="+" onclick="Count('kplus')">
+				</span>
+				<!-- //.kid -->
+				<hr>
+				<p class="guide" style="padding-left: 50px;">
+					※어린이 : 37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)<br>
+					※유아 : 36개월 이하 (베트남 : 만 5세 이하)
+				</p>
+			</div>
+				<!-- //#option -->
+				<!-- 이미지 소개 부분 -->
+				<div id="serviceimg">
+			<h1 style="text-align:center;">Dining &amp; Service</h1>
+			<h4 style="text-align:right;">&#43; &nbsp; <a href="/hotel/info/service/">더보기</a></h4>
+			<div id="todining">
+				<a href="/hotel/info/service/">
+				<img src="/hotel/image/todining.jpg" width="1000px" height="400px">
+				</a>
+			</div>
+			<div id="torooms">
+				<a href="/hotel/info/roominfo/">
+				<img src="/hotel/image/torooms.jpg" width="490px" height="300px">
+				</a>
+			</div>
+			<div id="tomap">
+				<a href="/hotel/info/map/">
+				<img src="/hotel/image/tomap.jpg" width="490px" height="300px">
+				</a>
+			</div>
+		</div>
+			</form>
+		</div>
+	</div>
+	<!-- //.main -->
+	<script type="text/javascript" src="js/materialize.js"></script>
+</section>
+<%@ include file="include/tail.jsp" %>

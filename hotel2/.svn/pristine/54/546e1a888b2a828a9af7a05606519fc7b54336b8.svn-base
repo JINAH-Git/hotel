@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- 
+작성일: 23.07.12.수
+작성자: 김진아
+ -->
+<%@include file="../include/head.jsp" %>
+<%
+request.setCharacterEncoding("euc-kr");
+
+String ename           = request.getParameter("ename");
+String kname           = request.getParameter("kname");
+String birth           = request.getParameter("birth");
+String email           = request.getParameter("email");
+String pw              = request.getParameter("pw");
+String gender          = request.getParameter("gender");
+String koreanforeigner = request.getParameter("koreanforeigner");
+String number          = request.getParameter("number");
+String agreop          = request.getParameter("agreop");
+
+if(ename == null || kname == null || birth == null || email == null || pw == null || number == null || agreop == null)
+{
+	response.sendRedirect("/hotel2/join.jsp");
+	return;
+}
+
+DBManager db = new DBManager();
+db.DBOpen();
+
+String sql ="";
+//중복된 아이디가 존재하는지 검사한다.
+//SQL : select id from user where id = 'test'
+sql = "select email from user where id = '" + id + "' ";
+db.RunSelect(sql);
+if(db.Next() == true)
+{
+	//중복된 아이디가 존재함.
+	%>
+	<script>
+		alert("중복된 아이디 [<%= id %>]가 존재합니다.");
+		document.location = "/hotel2/join.jsp";
+	</script>
+	<%
+}else
+{
+	//회원가입 토큰을 생성한다.
+	String token = UUID.randomUUID().toString();
+	token = token.replace("-","");
+	
+	//회원가입을 진행한다.
+	sql  = "insert into user (id,pw,name,gender,hobby,token) ";
+	sql += "values ('" + id + "',";
+	sql += "md5('" + pw + "'),";
+	sql += "'" + name + "',";
+	sql += "'" + gender + "',";
+	sql += "'" + hobby + "', ";
+	sql += "'" + token + "')";
+	db.RunSQL(sql);
+	
+	//회원가입 안내 메일 발송
+	String authURL = "http://192.168.0.72:8080/hotel2/auth.jsp?token=" + token;      //ip주소가 local 호스트 안됨!!! 서버 아이디로
+	MailSender mail = new MailSender();
+	mail.MailSend("from@naver.com", 
+			"to@naver.com",
+			"naverid","naverpassword",
+			"회원가입 인증 메일","<a href='" + authURL + "'>인증하기</a>");
+	%>
+
+
+한글 성명       : <%=ename %><br>
+영문 성명       : <%=kname %><br>
+생년월일        : <%=birth %><br>
+아이디           : <%=email %><br>
+비밀번호        : <%=pw %><br>
+성별              : <%=gender %><br>
+내국인/외국인: <%=koreanforeigner %><br>
+전화번호        : <%=number %><br>
+약관동의 여부 : <%=agreop %><br>
+
+	

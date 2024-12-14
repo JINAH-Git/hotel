@@ -1,0 +1,36 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%@ page import="hotel.vo.*" %>
+<%
+//번호와 카테고리값을 받아온다.
+String      bno = request.getParameter("bno");
+String category = request.getParameter("category");
+if(category == null) category = "R";
+
+//사용의 이메일값이 null이면 돌아간다.
+UserVO login = (UserVO)session.getAttribute("email");
+if(login == null || bno == null)
+{
+	out.println("값이 없습니다.");
+	return;
+}
+
+//해당 게시물 작성자가 아니면 종료한다.
+BoardDTO dto = new BoardDTO();
+BoardVO   vo = dto.read(bno,false);
+
+if(vo == null || !login.getEmail().equals(vo.getBwriter()))
+{
+	out.println("ERROR");
+	return;
+}
+
+//게시물을 삭제한다.
+dto.delete(bno);
+out.println("삭제되었습니다.");
+%>

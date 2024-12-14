@@ -1,0 +1,26 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<%
+request.setCharacterEncoding("euc-kr");
+
+
+AdminVO vo = new AdminVO();
+vo.setAtitle(request.getParameter("atitle"));
+vo.setAcategory(request.getParameter("acategory"));
+vo.setAnote(request.getParameter("anote"));
+
+//작성자 ID를 설정한다.
+vo.setName(login.getKname());
+vo.setEmail(login.getEmail());
+
+
+AdminDTO dto = new AdminDTO();
+dto.insert(vo);
+
+
+response.sendRedirect("index.jsp");
+%>

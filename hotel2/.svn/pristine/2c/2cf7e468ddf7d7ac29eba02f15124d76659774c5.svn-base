@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.vo.*" %>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%@ page import="java.util.*" %>
+<%
+String option = request.getParameter("items");
+String search = request.getParameter("search"); //°Ë»ö°ª
+
+if(option.equals("E"))
+{
+	option = "email";
+}else if(option.equals("N"))
+{
+	option = "ename";
+}else if(option.equals("B"))
+{
+	option = "birth";
+}else if(option.equals("P"))
+{
+	option = "number";
+}
+
+response.sendRedirect("index.jsp?option=" + option + "&search=" + search);
+%>

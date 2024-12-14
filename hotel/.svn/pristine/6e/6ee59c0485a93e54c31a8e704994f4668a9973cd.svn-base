@@ -1,0 +1,240 @@
+<!-- 
+작성자: 김진아
+작성일: 23.06.30.금, 23.07.03.월
+1. 회원가입 html 잡기, 이어서 틀 잡기
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria Hotel & Resort</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/head.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/tail.css" />
+	</head>
+	<style>
+		.main
+		{
+			background-color:bisque;
+			width: 1400px;
+			heigth: 408.98px;
+			margin: 0 auto;
+		}
+    	.stepwrap 
+    	{
+		    position: relative;
+		    padding: 0 0 1px 0px;
+		    box-sizing: content-box;
+		    margin: 0 auto;
+		    margin-top: 30px;
+		    border: 1px soild gray;
+		    display:inline-block;
+		    width:100%;
+		}
+		.stepwrapline-solid
+		{
+			border:1.5px;
+			border-top: 1.5px solid gray;
+			width:25px;
+		}
+		.txtbox 
+		{
+			background-color:#f9f9f9;;
+			padding: 63px 50px;
+			text-align:center;
+			margin-top: 50px;
+		}
+		.txtboxtitle
+		{
+			font-size:24px;
+		    line-height: 38px;
+		    font-weight: 500;
+		    letter-spacing: -.025em;
+		    text-align: center;
+		}
+		#join_btn
+		{
+			margin: 15px 0 15px;
+		    padding: 10;
+		    font-size: 18px;
+		    font-weight: 15;
+		    line-height: 60px;
+	        background-color: #000 !important;
+    		color: #fff !important;
+		    height: 65px;
+		}
+		#on
+		{
+			 background-color: RED;
+		}
+		.introduction
+		{
+			width:300px;
+			height:100px;
+			text-align: center;
+			margin-top:105px;
+		}
+		.introhead
+		{
+			width:1400px;
+			text-align: left;
+			font-size:35px;
+		}
+		.introtext
+		{
+		   display: block;
+		   margin-block-start: 1em;
+		   margin-block-end: 1em;
+		   margin-inline-start: 0px;
+		   margin-inline-end: 0px;
+	       font-family: notokrL, gothamL, playfair;
+		}
+		.first
+		{
+			width:10%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 40px;
+		}
+		.second
+		{
+			width:10%;
+			box-sizing: border-box;
+	     	position:absolute;
+			top: 0;
+			left: 150px;
+		}
+		
+		.third
+		{
+			width:10%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 340px;
+		}
+		.firstimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:black;
+			color:white;
+			font-weight: bold;
+			position:absolute;
+			top: 0;
+			left: 10px;
+		}
+		.thirdimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:white;
+			color:gray;
+			font-weight: bold;
+			border: 1px solid gray;
+			position:absolute;
+			top: 0;
+			left: 320px;
+		}
+	</style>
+	<body>
+		<div class="head">
+			<div class="header">
+				<h1 class="logo">
+					<a href="/hotel/index.html">Ezen <br> Hotels & Resorts</a>
+				</h1>
+				<span class="loginArea">
+					<a href="/hotel/user/login.html">로그인</a>&nbsp;|
+					<a href="/hotel/user/join.html">회원가입</a>&nbsp;|
+					<a href="/hotel/resv/confirm.html">예약 확인</a>
+				</span>
+				<!-- //.loginArea -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<a href="/hotel/resv/doresv.html">예약</a>
+							<img src="/hotel/image/calender.png" width="20px;" height="20px;">
+						</li>
+						<li>
+							<a href="/hotel/info/map">호텔 소개</a>
+						</li>
+						<li>
+							<a href="/hotel/faq/question">고객 문의</a>
+						</li>
+						<li>
+							<a href="/hotel/promotion/event">프로모션</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			<div class="introduction">
+				<h1 class="introhead"> &nbsp; &nbsp; JOIN</h1>
+			<div class="introtext"><p> &nbsp; Alegria 오신 것을 환영합니다.</p></div>	
+			</div>	
+			<div class="stepwrap">
+				<div class="firstimge">1</div>
+				<div class="first"> &nbsp;&nbsp; 본인 인증 </div>
+				<div class="second"><hr class="stepwrapline"></div>
+				<div class="thirdimge">2</div>	
+				<div class="third"> &nbsp;&nbsp;&nbsp; 회원 가입</div>	 
+			</div>
+			<!-- 이메일로 인증 받는 틀 시작-->
+			<div class="txtbox">
+				<p class="txtboxtitle">
+					회원가입을 하시려면 이메일 본인 인증이 필요합니다.
+				</p>
+				<!-- 버튼  시작-->
+				<form method="post" name="joinEmail" action="joindo.html">
+					<input type="submit" id="join_btn" value="이메일 본인 인증">
+				</form>
+				<!-- 버튼 끝 -->
+			</div>
+			<!-- 이메일로 인증 받는 틀 끝 -->
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<div class="tail">
+			<div class="localBox">
+				<img src="image/hotel.jpg" width="170px" height="170px">
+				<div class="brandInfo">
+					<dl class="brand">
+						<dt><a href="#">HOTEL1</a></dt>
+						<dt><a href="#">HOTEL2</a></dt>
+						<dt><a href="#">HOTEL3</a></dt>
+					</dl>
+				</div>
+				<!-- //.brand -->
+				<div class="info">
+					<dl class="introduction">
+						<dd>호텔이젠 소개</dd>
+						<dd>호텔 개발</dd>
+						<dd>고객문의</dd>
+						<dd>사이트맵</dd>
+					</dl>
+					<!-- //.introduction -->
+					<dl class="hotelInfo">
+						<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+						<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+					</dl>
+					<!-- //.hotelInfo -->
+				</div>
+				<!-- //.info -->
+			</div>
+			<!-- //.localBox -->
+			<div class="footer">
+			</div>
+			<!-- //.footer -->
+		</div>
+		<!-- //.tail -->
+	</body>
+</html>

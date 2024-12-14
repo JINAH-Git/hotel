@@ -1,0 +1,96 @@
+//페이징 처리 클래스
+package hotel.vo;
+
+public class PageVO 
+{
+	protected int    totalPage;   //전체 게시물 페이지 갯수
+	protected int    startBlock;  //페이지 시작 블럭 
+	protected int    endBlock;    //페이지 종료 블럭
+	protected String TemplateURL; //URL 템플릿
+	
+	//전체 게시물 갯수를 설정한다.
+	public void SetTotal(int dataTotal,int curPage)
+	{
+		//전체 게시물 페이지 갯수를 구한다.
+		totalPage = (dataTotal/10);
+		//데이터가 10의 배수인 경우
+		if( dataTotal % 10 != 0) totalPage++;
+		
+		SetCurPage(curPage);
+	}
+	
+	//출력 할 페이징 목록을 설정한다.
+	public void SetCurPage(int curPage)
+	{
+		//페이지 시작 블럭 계산
+		startBlock = curPage - (curPage % 5) + 1;
+		if(curPage % 5 == 0)
+		{
+			startBlock = (curPage - 1) - ((curPage - 1) % 5) + 1;
+		}		
+		//페이지 종료 블럭 계산
+		endBlock   = startBlock + 5;
+		
+		//페이지 종료 블럭 값이 전체 페이지 갯수보다 크면...
+		if(endBlock >= totalPage) endBlock = totalPage + 1;		
+	}
+	
+	//페이징 템플릿을 설정한다.
+	public void SetURL(String url)
+	{
+		TemplateURL = url;
+	}
+	
+	//이전 블럭 얻기
+	public String GetPrevBlock()
+	{
+		String url = TemplateURL;
+
+		if(startBlock > 1)
+		{
+			url = url.replace("{page}", Integer.toString(startBlock - 1));
+		}else
+		{
+			url = "";
+		}
+		System.out.println("GetPrevBlock:" + url);
+		return url;
+	}
+	
+	//다음 블럭 얻기
+	public String GetNextBlock()
+	{
+		String url = TemplateURL;
+
+		if(endBlock < totalPage)
+		{
+			url = url.replace("{page}", Integer.toString(endBlock));
+		}else
+		{
+			url = "";
+		}
+		System.out.println("GetNextBlock:" + url);
+		return url;
+	}	
+	
+	//페이징 얻기
+	public String GetPaging(int curPage)
+	{
+		String url = "";
+		for(int i = startBlock; i < endBlock; i++)
+		{
+			if(i == curPage)
+			{
+				url += "<span style='background-color:red;'><strong>";
+				url += TemplateURL.replace("{page}", Integer.toString(i));
+				url += "</strong></span>";
+			}else
+			{
+				url += TemplateURL.replace("{page}", Integer.toString(i));
+			}
+			url += "\n";
+		}	
+		System.out.println("GetPaging:" + url);
+		return url;
+	}
+}

@@ -1,0 +1,56 @@
+@charset "EUC-KR";
+
+.view_inner
+{
+	width:700px;
+	height:600px;
+	margin:85px;
+}
+.list_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.modify_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.delete_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.btn_area
+{
+	position:relative;
+	top:30px;
+}
+.writetbl
+{
+	border-color:#66575A;
+	border-width:2px 0px 2px 0px;
+	border-style:solid;
+}
+.writetbl hr
+{
+	background-color:#f1e3c4;
+	height:5px;
+	width:705px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.view_inner hr
+{
+	background-color:#EFEFEF;
+	width:705px;
+	margin-top:0px;
+	height:0.5px;
+}

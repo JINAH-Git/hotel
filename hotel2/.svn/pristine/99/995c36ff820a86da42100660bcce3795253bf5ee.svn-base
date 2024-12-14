@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>객실 소개 수정</title>
+		<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="../../style/room.css" />
+	</head>
+	<style>
+		input[type="text"]
+		{
+			width: 100%;
+			height: 100%;
+			outline: none;
+			box-sizing: border-box;
+		}
+	</style>
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>호텔 소개</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../map/">오는 길 소개</a></li>
+				<li><a href="../roominfo/" style="background-color: yellow; padding: 0 30px;">객실 소개</a></li>
+				<li><a href="../service/">부대 시설</a></li>
+				<li><a href="../notice/">공지사항</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>객실 소개 수정</h3>
+			<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 호텔 소개 &gt; 객실 소개 수정</p>
+			<hr>
+			<div class="room">
+				<form action="modifyok.jsp">
+					<div id="pop_info_1" class="pop_wrap" style="display:block;">
+					  	<div class="pop_inner">
+						    <p class="rkind">* 객실 이름 
+								<input type="text" value="Standard Room">
+							</p>
+						    <input type="file">
+						    <p class="info">
+						    	<textarea style="width: 865px; height: 400px; resize: none; outline: none;" placeholder="객실 정보"></textarea>
+								<br>* 부가 시설<br>
+								객실 타입 및 금액 : [수페리어 스위트] 650,000원 ~ <br> [코너 스위트] 760,000원 ~<br>
+								공통 혜택 : 체련장(Gym), 실내 수영장 혜택 실내 사우나 입장
+							</p>
+					  	</div>
+					  	<!-- //.pop_inner -->
+					</div>
+					<!-- //.pop_info_1 -->
+					<div class="adminBtn">
+						<a href="index.jsp" id="cancel">취소</a>
+						<a href="modifyok.jsp" id="modify">수정</a> &nbsp;
+					</div>
+					<!-- //.adminBtn -->
+				</form>
+			</div>
+			<!-- //.room -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>

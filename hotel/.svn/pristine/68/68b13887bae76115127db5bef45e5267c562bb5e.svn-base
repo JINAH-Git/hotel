@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Ezen Hotels & Resorts</title>
+		<link href="/hotel/style/main.css">
+	</head>
+	<body>
+		<div class="head">
+			<div class="header">
+				<h1 class="logo">
+					<a href="index.html">Ezen <br> Hotels & Resorts</a>
+				</h1>
+				<span class="loginArea">
+					<a href="login.html">로그인</a>&nbsp;|
+					<a href="join.html">회원가입</a>&nbsp;|
+				</span>
+				<!-- //.loginArea -->
+				<div class="resvConfirm">
+					<a href="resvConfirm.html">예약 확인</a>
+				</div>
+				<!-- //.resvConfirm -->
+				<div class="search">
+					<input type="text" name="keyword" placeholder="검색">
+					<img src="image/search.png" id="searchBtn">
+				</div>
+				<!-- //.search -->
+				<div class="reservation">
+					<a href="resv.html">예약</a>
+				</div>
+				<!-- //.reservation -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<span>
+								<a href="aboutEzen.html">호텔 소개</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<a href="#">고객 문의</a>
+							</span>
+						</li>
+						<li>
+							<span>
+								<a href="#">프로모션</a>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<div class="tail">
+			<div class="localBox">
+				<img src="image/hotel.jpg" width="170px" height="170px">
+				<div class="brandInfo">
+					<dl class="brand">
+						<dt><a href="#">HOTEL1</a></dt>
+						<dt><a href="#">HOTEL2</a></dt>
+						<dt><a href="#">HOTEL3</a></dt>
+					</dl>
+				</div>
+				<!-- //.brand -->
+				<div class="info">
+					<dl class="introduction">
+						<dd>호텔이젠 소개</dd>
+						<dd>호텔 개발</dd>
+						<dd>고객문의</dd>
+						<dd>사이트맵</dd>
+					</dl>
+					<!-- //.introduction -->
+					<dl class="hotelInfo">
+						<dd>전주이젠호텔 tel : 010 - 1111- 1111</dd>
+						<dd>전주이젠호텔 tel2 : 010 - 2222- 2222</dd>
+					</dl>
+					<!-- //.hotelInfo -->
+				</div>
+				<!-- //.info -->
+			</div>
+			<!-- //.localBox -->
+			<div class="footer">
+			</div>
+			<!-- //.footer -->
+		</div>
+		<!-- //.tail -->
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>부대 시설 수정</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/modify.css" />
+		<script src="/hotel/js/includeHTML.js"></script>
+	</head>
+	<script>
+		function DoAdd()
+		{	
+			alert("영역 추가");
+		}
+	</script>
+	<header include-html="/hotel/include/head.html"></header>
+	<!-- 컨텐츠 시작하는 부분 -->
+	<section>
+		<div class="main">
+			<div class="menubar">
+				<h2>호텔 소개</h2>
+				<hr>
+				<ul class="menu">
+					<li><a href="/hotel/info/map/">오는 길 소개</a></li>
+					<li><a href="/hotel/info/roominfo/">객실 소개</a></li>
+					<li><a href="/hotel/info/service/" style="background-color: yellow; padding: 0 30px;">부대 시설</a></li>
+					<li><a href="/hotel/info/notice/">공지사항</a></li>
+				</ul>
+				<!-- //.menu -->
+			</div>
+			<!-- //.menubar -->
+			<div class="contents">
+				<h3>부대 시설 수정</h3>
+				<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 호텔 소개 &gt; 부대 시설 수정</p>
+				<hr>
+				<input type="button" value="추가" id="add" onclick="DoAdd();">
+				<form name="modifyFrm" id="modifyFrm" action="modifyok.html" enctype="multipart/form-data">	
+					<div class="service1">
+						시설 이름 : <input type="text" value="다이닝">
+						<textarea style="width: 700px; height: 300px; resize: none; outline: none;" placeholder="시설 설명">위치 : EzenHotel 1F</textarea>
+						<input type="file" name="fname1" id="fname1">
+						<input type="button" value="삭제" id="delete" onclick="javascript:location.href='delete.html'">
+					</div>
+					<!-- //.service1 -->
+					<div class="service2">
+						시설 이름 : <input type="text" value="헬스장">
+						<textarea style="width: 700px; height: 300px; resize: none; outline: none;" placeholder="시설 설명">위치 : EzenHotel 1F</textarea>
+						<input type="file" name="fname2" id="fname2">
+						<input type="button" value="삭제" id="delete" onclick="javascript:location.href='delete.html'">
+					</div>
+					<!-- //.service2 -->
+					<div class="service3">
+						시설 이름 : <input type="text" value="사우나">
+						<textarea style="width: 700px; height: 300px; resize: none; outline: none;" placeholder="시설 설명">위치 : EzenHotel 1F</textarea>
+						<input type="file" name="fname3" id="fname3">
+						<input type="button" value="삭제" id="delete" onclick="javascript:location.href='delete.html'">
+					</div>
+					<!-- //.service3 -->
+					<div class="service4">
+						시설 이름 : <input type="text" value="수영장">
+						<textarea style="width: 700px; height: 300px; resize: none; outline: none;" placeholder="시설 설명">위치 : EzenHotel 1F</textarea>
+						<input type="file" name="fname4" id="fname4">
+						<input type="button" value="삭제" id="delete" onclick="javascript:location.href='delete.html'">
+					</div>
+					<!-- //.service4 -->
+					<input type="button" value="취소" id="cancel" onclick="javascript:location.href='index.html'">
+					<input type="button" value="수정" id="modify" onclick="javascript:alert('수정하였습니다.')">
+				</form>
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //.main -->
+	</section>
+	<!--  컨텐츠 끝나는 부분 -->
+	<footer include-html="/hotel/include/tail.html" ></footer>
+	<script>
+	   includeHTML();
+	</script>
+</html>

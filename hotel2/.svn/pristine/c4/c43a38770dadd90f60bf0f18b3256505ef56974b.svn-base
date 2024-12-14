@@ -1,0 +1,114 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.dao.*" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>리뷰 보기</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+		<script src="/hotel/js/includeHTML.js"></script>
+	</head>
+	<body>
+		<style>
+			.view_inner
+			{
+				width:700px;
+				height:600px;
+				margin:85px;
+			}
+			.list_btn
+			{
+				position:relative;
+				width:70px;
+				height:45px;
+				font-size:18px;
+			}
+			.modify_btn
+			{
+				position:relative;
+				width:70px;
+				height:45px;
+				font-size:18px;
+			}
+			.delete_btn
+			{
+				position:relative;
+				width:70px;
+				height:45px;
+				font-size:18px;
+			}
+			.btn_area
+			{
+				position:relative;
+				top:30px;
+			}
+			.writetbl
+			{
+				border-color:#f1e3c4;
+				border-width:5px;
+				border-style:solid;
+			}
+			.writetbl hr
+			{
+				background-color:#f1e3c4;
+				height:5px;
+				width:705px;
+				margin-top:0px;
+				margin-bottom:0px;
+			}
+		</style>
+		<header include-html="/hotel/include/head.html"></header>
+		<!-- 컨텐츠 시작하는 부분 -->
+		<div class="main">
+			<div class="menubar">
+				<h2>프로모션</h2>
+				<hr>
+				<ul class="menu">
+					<li><a href="/hotel/promotion/event/">이벤트</a></li>
+					<li><a href="/hotel/promotion/review/" style="background-color: yellow; padding: 0 30px;">리뷰</a></li>
+				</ul>
+				<!-- //.menu -->
+			</div>
+			<!-- //.menubar -->
+			<div class="contents">
+				<h3>리뷰</h3>
+				<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 프로모션 &gt; 리뷰</p>
+				<hr>
+				<div class="view_inner">
+					<table border="0" class="writetbl" style="width:700px; height:300px; border-collapse:collapse;">
+						<tr>
+							<td><input type="text" name="title" style="width:700px; height:50px; border:none; outline:none; font-size:18px;" value="(공지) 6월 당첨자 안내" readonly="readonly"><hr></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="name" style="width:700px; height:50px; border:none; outline:none; font-size:18px;" value="관리자" readonly="readonly"><hr></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="note" style="width:700px; height:300px; border:none; outline:none; font-size:18px;" value="내용입니다." readonly="readonly"><hr></td>
+						</tr>
+						<tr>
+							<td>등록된 첨부파일이 없습니다.</td>
+						</tr>
+					</table>
+					<div class="btn_area">
+						<a href="index.jsp" style="position:relative; left:250px"><input type="button" class="list_btn" value="목록"></a>
+						<a href="modify.jsp" style="position:relative; left:290px"><input type="button" class="modify_btn" value="수정"></a>
+						<a href="delete.jsp" style="position:relative; left:330px"><input type="button" class="delete_btn" value="삭제"></a>
+					</div>
+					<!-- //.btn_area -->
+				</div>
+				<!-- //.view_inner -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //.main -->
+		<!--  컨텐츠 끝나는 부분 -->
+		<footer include-html="/hotel/include/tail.html" ></footer>
+		<script>
+	    includeHTML();
+		</script>
+	</body>
+</html>

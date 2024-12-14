@@ -1,0 +1,130 @@
+//회원 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+/*
+ * 작성일: 23.07.10.월 
+ * 작성자: 김진아
+ * 
+ */
+package hotel.dto;
+
+import hotel.dao.*;
+import hotel.vo.*;
+
+//각 메소드에서 DBManager를 사용하고 있음. 따라서 DBManager를 상속하여 사용하는게 간편하다.
+public class UserDTO extends DBManager
+{
+	//회원가입(User)
+	
+	//c: insert
+	//이메일 인증 발송
+	public boolean emailsend()
+	{
+		boolean check = false;
+		
+		this.DBOpen();
+		String sql = "";
+				
+		return check;
+		
+	}
+	//UserVO객체를 이용하여 회원가입을 한다.Join()(회원가입)
+	public boolean join(UserVO user)
+	{
+		//중복된 이메일이 있을 때
+		if(this.isduplicate(user.getEmail()) == true)
+		{
+			System.out.println("중복된 아이디[" + _R(user.getEmail()) + "] 입니다.");
+			return false; //false는 죽인다. true는 살린다.
+		}
+		//중복된 이메일이 없을 때(default 값은 제외)
+		this.DBOpen();
+		String sql = "";
+		sql = "insert into user(email,pw,ename,kname,gender,korf,phone,birth,agreop,pwfcnt,isremember,token) ";
+		sql += "values ";
+		sql += "('" + _R(user.getEmail()) + "', ";
+		sql += "md5('" + _R(user.getPw()) + "', ";
+		sql += "'" + _R(user.getEname()) + "',  ";
+		sql += "'" + _R(user.getKname()) + "', ";
+		sql += "'" + _R(user.getGender()) + "', ";
+		sql += "'" + _R(user.getKorf()) + "', ";
+		sql += "'" + _R(user.getPhone()) + "', ";
+		sql += "'" + _R(user.getBirth()) + "', "; 
+		sql += "'" + _R(user.getAgreop()) + "', ";
+		sql += "'" + _R(user.getPwfcnt()) + "'), ";
+		sql += "'" + _R(user.getIsremember()) + "'), ";
+		sql += "'" + _R(user.getToken()) + "') ";
+		this.RunSQL(sql);
+		
+		this.DBClose();
+		return true;
+		
+	}
+	
+
+	//r : select
+	//read()(회원 정보 조회)
+	
+	//levelcheck()(등급 조회)
+	
+	//isduplicate()(이메일 중복 검사)
+	//true: 중복, false: 중복 아님 
+	public boolean isduplicate(String email)
+	{
+		boolean flag = false;
+		this.DBOpen();
+		
+		String sql = "";
+		sql = "select email from user where email = '" + _R(email) + "' ";
+		this.RunSelect(sql);
+		//중복된 email이 존재
+		if(this.Next() == true)
+		{
+			flag = true;
+		}
+		this.DBClose();
+		return flag;
+	}
+		
+	//login()(로그인 하기)
+	//return 값 true: 로그인 성공, false: 로그인 실패
+	public boolean login(String email, String pw)
+	{
+		boolean islogin = false;
+		this.DBOpen();
+		
+		String sql = "";
+		sql = "select email ";
+		sql += "from user ";
+		sql += "where email = '" + _R(email) + "' ";
+		sql += "and pw = md5('" + _R(pw) + "') ";
+		sql += "and level = 'U' ";
+		this.RunSelect(sql);
+		if(this.Next() == true)
+		{
+			//로그인 성공
+			System.out.println("[" + _R(email) + "] 로그인 성공!!!");
+			islogin = true;
+		}else
+		{
+			System.out.println("[" + _R(email) + "] 로그인 성공!!!");
+		}
+		this.DBClose();
+		return islogin;
+		
+	}
+	
+	//pwfcheck()(비밀번호 틀린 횟수 조회)
+	
+	//list()(목록을 가져오기)
+	
+	//gettotal()(전체 회원정보 개수)
+
+
+	//u : update
+	//modify()(회원 정보 수정)
+	//pwchange()(비밀번호 변경)
+	//pwfreset()(비밀번호 틀린 횟수 초기화)
+	//pwfcount()(비밀번호 틀린 횟수 업데이트)
+	
+
+	
+}

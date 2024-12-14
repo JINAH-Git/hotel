@@ -1,0 +1,92 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+<style>
+	.write_inner
+	{
+		width:700px;
+		height:600px;
+		margin:85px;
+	}
+	.btn_area
+	{
+		position:relative;
+		top:30px;
+	}
+	.write_btn
+	{
+		position:relative;
+		width:70px;
+		height:45px;
+		font-size:18px;
+	}
+	.cancel_btn
+	{
+		position:relative;
+		width:70px;
+		height:45px;
+		font-size:18px;
+	}
+	.writetbl
+	{
+		border-color:#f1e3c4;
+		border-width:5px;
+		border-style:solid;
+	}
+	.writetbl hr
+	{
+		background-color:#f1e3c4;
+		height:5px;
+		width:705px;
+		margin-top:0px;
+	}
+</style>
+<!-- 컨텐츠 시작하는 부분 -->
+<div class="main">
+	<div class="menubar">
+		<h2>고객 문의</h2>
+		<hr>
+		<ul class="menu">
+			<li><a href="/hotel/faq/question/" style="background-color: yellow; padding: 0 30px;">자주 묻는 질문</a></li>
+			<li><a href="/hotel/faq/inquiry/">고객 문의</a></li>
+		</ul>
+		<!-- //.menu -->
+	</div>
+	<!-- //.menubar -->
+	<div class="contents">
+		<h3>자주 묻는 질문</h3>
+		<p class="list"><img src="/hotel/image/home.png" width="20px;" height="20px;"> &gt; 고객 문의 &gt; 고객 문의</p>
+		<hr>
+		<div class="write_inner">
+			<form id="writefrm" name="writefrm" action="writeok.jsp">
+				<table border="0" class="writetbl" style="width:700px; height:100%; border-collapse:collapse;">
+					<tr>
+						<td style="background-color:#f1e3c4; padding-bottom:20px;">제목</td>
+						<td>
+						<input type="text" name="title" style="width:650px; height:50px; border:none; font-size:18px;"placeholder="제목을 입력하세요">
+						<hr style="width:650px;">
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#f1e3c4;">내용</td>
+						<td>
+						<textarea name="note" style="width:650px; height:290px; resize:none; border:none; outline:none;" placeholder="내용을 입력하세요"></textarea>
+						</td>
+					</tr>
+				</table>
+				<div class="btn_area">
+					<a href="index.jsp" style="position:relative; left:300px;"><input type="submit" class="write_btn" value="등록"></a>
+					<a href="index.jsp" style="position:relative; left:330px;"><input type="submit" class="cancel_btn" value="취소"></a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- //.contents -->
+</div>
+<!-- //.main -->
+<!--  컨텐츠 끝나는 부분 -->
+<%@ include file="../../include/tail.jsp"%>

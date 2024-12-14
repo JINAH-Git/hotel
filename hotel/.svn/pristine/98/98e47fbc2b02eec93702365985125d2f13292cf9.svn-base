@@ -1,0 +1,69 @@
+@charset "EUC-KR";
+
+#writeFrm
+{
+	position: relative;
+	margin: 0 auto;
+}
+
+.writetb
+{
+	border: 3px solid #F1E3C4;
+	width: 700px;
+	min-height: 500px;
+	margin: 60px auto 0;
+}
+
+.writetb hr
+{
+	border: 1px solid #F1E3C4;	
+}
+
+.writetb input
+{
+	border-top: none;
+	border-bottom: 3px solid #F1E3C4;
+	border-left: none;
+	border-right: none;
+	width: 100%; 
+	height: 30px; 
+	outline: none;
+	box-sizing: border-box;
+	
+}
+
+.writetb textarea
+{
+	border: none;
+	width: 100%; 
+	outline: none;
+	box-sizing: border-box;
+	resize: none;
+}
+
+#fname
+{
+	position: absolute;
+	left: 90px;
+	margin-top: 10px;	
+}
+
+.btn
+{	
+	width: 700px;
+	height: 30px;
+	margin: 10px auto 0;
+}
+
+#write, #cancel, #modify, #delete
+{
+	width: 60px;
+	border-radius: 5%;
+	border-width: 0;
+	background: #F1E3C4;
+	font-weight: 500;
+	font-size: 18px;
+	cursor: pointer;
+	float: right;
+	margin-left: 10px;
+}

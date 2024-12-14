@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script>
+			window.onload = function()
+			{
+				alert("회원정보 변경이 완료되었습니다.");
+				document.location = "/hotel/index.html";
+			}
+			
+		</script>
+	</body>
+</html>

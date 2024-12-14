@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>부대 시설</title>
+		<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="../../style/service.css" />	
+	</head>
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>호텔 소개</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../map/">오는 길 소개</a></li>
+				<li><a href="../roominfo/index.jsp?acategory=T">객실 소개</a></li>
+				<li><a href="../service/index.jsp?acategory=F" style="background-color: yellow; padding: 0 30px;">부대 시설</a></li>
+				<li><a href="../notice/index.jsp?acategory=N">공지사항</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>부대 시설</h3>
+			<p class="list"><img src="/hotel2/image/home.png" width="20px;" height="20px;"> &gt; 호텔 소개 &gt; 부대 시설</p>
+			<hr>
+			<div class="adminBtn">
+				<a href="modify.jsp" id="modify">수정</a>
+			</div>
+			<!-- //.adminBtn -->
+			<div class="service">
+				<h4>다이닝</h4>
+				<div id="dining"></div>
+				<p>위치 : EzenHotel 1F</p>
+				<h4>헬스장</h4>
+				<div id="health"></div>
+				<p>위치 : EzenHotel 1F</p>
+				<h4>사우나</h4>
+				<div id="souna"></div>
+				<p>위치 : EzenHotel 1F</p>
+				<h4>수영장</h4>
+				<div id="swimming"></div>
+				<p>위치 : EzenHotel 1F</p>
+			</div>
+			<!-- //.service -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>
+</html>

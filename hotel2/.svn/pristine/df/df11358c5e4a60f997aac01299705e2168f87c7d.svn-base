@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.vo.*" %>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%
+//번호값을 받아온다.
+String bno = request.getParameter("bno");
+
+
+
+//사용자의 이메일값이 null이면 돌아간다.
+UserVO login = (UserVO)session.getAttribute("login");
+if(login == null || bno == null)
+{
+	out.println("값이 없습니다.");
+	return;
+}
+
+//해당 게시물 작성자가 아니면 종료한다.
+BoardDTO dto = new BoardDTO();
+BoardVO   vo = dto.read(bno,false);
+
+if(!login.getEmail().equals(vo.getEmail()))
+{
+	out.println("해당 게시물의 작성자가 아닙니다!");
+	return;
+}
+
+//게시물을 삭제한다.
+dto.delete(bno);
+out.println("OK");
+%>

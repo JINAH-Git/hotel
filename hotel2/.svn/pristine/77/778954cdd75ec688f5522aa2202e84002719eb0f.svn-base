@@ -1,0 +1,91 @@
+@charset "EUC-KR";
+
+.write_inner
+{
+	width:700px;
+	height:600px;
+	margin:85px;
+}
+.write_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.cancel_btn
+{
+	position:relative;
+	width:70px;
+	height:45px;
+	font-size:18px;
+}
+.btn_area
+{
+	position:relative;
+	top:30px;
+}
+.writetbl
+{
+	border-color:#f1e3c4;
+	border-width:5px;
+	border-style:solid;
+}
+.writetbl hr
+{
+	background-color:#f1e3c4;
+	height:5px;
+	width:705px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.headtype
+{
+	text-align:center;
+}
+.event_inner
+{
+	width:700px;
+	height:850px;
+	margin:85px;
+}
+.event_write
+{
+	position:absolute;
+	right:0;
+	top:50px;
+	width:650px;
+	height:100px;
+	margin:85px;
+}
+.event_slt
+{
+	width:700px;
+	height:800px;
+}
+.event_slt > li
+{
+	margin-left:30px;
+}
+
+.adminBtn a
+{
+	text-decoration: none;
+	position:absolute;
+	width:50px;
+	top:-35px;
+	left:655px;
+	background-color:#c0c0c0;
+}
+
+.adminBtn a:visited 
+{
+	color: #000;	
+	text-decoration: none;
+	position:absolute;
+	width:50px;
+	top:-35px;
+	left:655px;
+	background-color:#c0c0c0;
+}

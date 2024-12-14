@@ -1,0 +1,231 @@
+@charset "EUC-KR";
+
+.main
+{
+	width: 1200px;
+	min-height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.stepWrap
+{
+	text-align: center;
+	padding: 50px 0 0 0;
+}
+
+.step li
+{
+	width: 30px;
+	height: 30px;
+	border: 2px solid brown;
+	border-radius: 50%;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: 600;
+	display: inline-block;
+}
+
+.main > p
+{
+	text-align: center;
+	font-size: 28px;
+	color: brown;
+}
+
+#hr1
+{
+	height: 5px;
+	background-color: #F1E3C4;
+	border: none;
+}
+
+#hr2
+{
+	height: 3px;
+	background-color: #e4e4e4;
+	border: none;
+}
+
+
+/* 예약 테이블 */
+#resvtb
+{
+	width: 1000px;
+	text-align: center;
+	font-weight: 900;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+#resvtb th
+{
+	height: 30px;
+	color: gray;
+}
+
+#resvtb th:last-child 
+{
+	border: none;	
+}
+
+#resvtb td
+{
+	height: 30px;
+}
+
+.resvdate
+{
+	cursor: pointer;
+}
+
+.resvdate input[type="text"] 
+{
+	width: 150px;
+	height: 20px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: center;
+}
+
+#night
+{
+	width: 100px;
+	height: 20px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.people input[type="text"]
+{
+	width: 20px;
+	height: 20px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: center;
+}
+
+/* 검색 버튼 */
+#searchBtn
+{
+	width: 100px;
+	height: 100%;
+	background-color: brown; 
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+/* 날짜 부분 */
+#date
+{
+	width: 1000px;
+	height: 300px;
+	position: absolute;
+	background-color: #fff;
+	z-index: 10;
+	padding: 10px 100px;
+	display: none;	
+}
+
+/* 옵션 부분 */
+#option
+{
+	width: 1000px;
+	height: 120px;
+	position: absolute;
+	background-color: #fff;
+	z-index: 10;
+	padding: 10px 100px;
+	margin: 30px 0;
+	display: none;
+}
+
+/* 객실 글자  */
+.room
+{
+	font-weight: bold;	
+	padding: 0 60px;
+}
+
+/* 성인,어린이,유아 글자 */
+#adult, #child, #kid
+{
+	padding: 0 30px;
+}
+
+#option input[type="button"]
+{
+	background: #fff;
+	border-width: medium;
+	width: 30px;
+	height: 30px;
+}
+
+#option input[type="text"]
+{
+	width: 20px;
+	height: 20px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#option hr
+{
+	border-style: dotted;
+	border-width: 0.1mm;
+	margin : 20px 0;
+}
+
+.guide
+{
+	color: brown;
+	font-size: 12px;
+	padding-left: 50px;
+	line-height: 1.4;
+}
+
+/* 내용 부분*/
+.contents
+{
+	height: 300px;
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bold;
+	z-index: 1;
+	display: none;
+}
+
+.contents > table
+{
+	width: 1000px;
+	height: 300px;
+	margin: 120px auto;
+	border: 2px solid #F1E3C4;
+}
+
+/* 예약하기 버튼과 결제하기 버튼*/
+.contents > table input[type="button"], #payBtn
+{
+	background: #F1E3C4;
+	padding: 5px 10px;
+	font-size: 20px;
+	border-radius: 10%;
+	border: 1px solid #F1E3C4;
+	font-weight: 400;
+	cursor: pointer;
+}

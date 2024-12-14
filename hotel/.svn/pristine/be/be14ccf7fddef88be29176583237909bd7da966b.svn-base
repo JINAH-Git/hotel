@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>예약 3단계</title>		
+		<link rel="stylesheet" type="text/css" href="/hotel/style/resv.css" />
+		<script src="/hotel/js/includeHTML.js"></script>
+	</head>
+	<script>
+		function DoPay()
+		{
+			alert("결제가 완료되었습니다.");
+			location.href = "/hotel/index.html";
+		}
+	</script>
+	<header include-html="/hotel/include/head.html"></header>
+	<!-- 컨텐츠 시작하는 부분 -->
+	<section>
+		<div class="main">
+			<p style="margin-top: 130px; font-size: 34px;">예약 확인</p>		
+			<div id="content" style="width: 1200px; height: 300px; text-align: center; padding: 100px 0;">
+				<form action="/hotel/resv/confirm.html" method="get">
+					<input type="text" placeholder="예약 번호" style="width: 300px; height: 50px; margin: 0 auto; font-size: 25px; outline: none;"><br>
+					<input type="submit" value="조회하기" style="background: #F1E3C4; padding: 5px 10px; font-size: 24px; border-radius: 5%; border: 1px solid #F1E3C4; cursor: pointer; margin-top: 50px;">
+				</form>
+			</div>
+			<!-- //#contents -->
+		</div>
+		<!-- //.main -->
+	</section>
+	<!--  컨텐츠 끝나는 부분 -->
+	<footer include-html="/hotel/include/tail.html"></footer>
+	<script>
+	   includeHTML();
+	</script>
+</html>

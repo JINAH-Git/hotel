@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="hotel.vo.*" %>
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%
+//session에 있는 정보 받아오기
+//UserVO login = (UserVO)session.getAttribute("login");
+/*
+if(login_email == null || login_level != "A")
+{
+	%>
+	<script>
+		alert("관리 권한이 없습니다. 관리자 계정으로 로그인하시기 바랍니다");
+		document.location = "../../index.jsp";
+	</script>
+	<%
+	return;
+}
+*/
+
+
+//스탠다드룸 가격 업데이트
+RoomctrVO vo1 = new RoomctrVO();
+vo1.setRtype(request.getParameter("S"));
+vo1.setAdprice(request.getParameter("stdadpri"));
+vo1.setChprice(request.getParameter("stdchpri"));
+RoomctrDTO dto1 = new RoomctrDTO();
+dto1.pricemodify(vo1);
+
+//더블룸 가격 업데이트
+RoomctrVO vo2 = new RoomctrVO();
+vo2.setRtype(request.getParameter("D"));
+vo2.setAdprice(request.getParameter("dbadpri"));
+vo2.setChprice(request.getParameter("dbchpri"));
+RoomctrDTO dto2 = new RoomctrDTO();
+dto2.pricemodify(vo2);
+
+//패밀리룸 가격 업데이트
+RoomctrVO vo3 = new RoomctrVO();
+vo3.setRtype(request.getParameter("F"));
+vo3.setAdprice(request.getParameter("famadpri"));
+vo3.setChprice(request.getParameter("famchpri"));
+RoomctrDTO dto3 = new RoomctrDTO();
+dto3.pricemodify(vo3);
+
+//스위트룸 가격 업데이트
+RoomctrVO vo4 = new RoomctrVO();
+vo4.setRtype(request.getParameter("ST"));
+vo4.setAdprice(request.getParameter("suitadpri"));
+vo4.setChprice(request.getParameter("suitchpri"));
+RoomctrDTO dto4 = new RoomctrDTO();
+dto4.pricemodify(vo4);
+
+response.sendRedirect("index.jsp");
+%>

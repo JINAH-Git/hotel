@@ -1,0 +1,68 @@
+@charset "EUC-KR";
+
+#modifyFrm
+{
+	position: relative;
+	width: 700px;
+	margin: 50px auto;
+}
+
+#modifyFrm > div
+{
+	margin-top: 50px 0;
+}
+
+#modifyFrm > div > input[type="text"]
+{
+	margin-bottom: 10px;
+}
+
+.modifytb
+{
+	border: 3px solid #F1E3C4;
+	width: 700px;
+	min-height: 0px;
+	margin: 60px auto 0;
+}
+
+.modifytb hr
+{
+	border: 1px solid #F1E3C4;	
+}
+
+.modifytb input
+{
+	border-top: none;
+	border-bottom: 3px solid #F1E3C4;
+	border-left: none;
+	border-right: none;
+	width: 100%; 
+	height: 30px; 
+	outline: none;
+	box-sizing: border-box;
+	
+}
+
+.modifytb textarea
+{
+	border: none;
+	width: 100%; 
+	outline: none;
+	box-sizing: border-box;
+	resize: none;
+}
+
+#fname
+{	
+	position: absolute;
+	left: 0;
+	bottom: -35px;
+}
+
+.btn
+{	
+	width: 700px;
+	height: 30px;
+	margin: 10px auto 0;
+}
+

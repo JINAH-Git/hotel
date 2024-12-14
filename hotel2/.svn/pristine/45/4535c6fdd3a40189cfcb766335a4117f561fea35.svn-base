@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+
+.other
+{
+	background-color: gray !important;
+	opacity: 0.5;
+}
+
+.checkin, .checkout
+{
+	background-color: yellowgreen !important;
+}

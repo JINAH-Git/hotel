@@ -1,0 +1,100 @@
+@charset "EUC-KR";
+
+.main
+{
+	width: 1200px;
+	min-height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+/* 메뉴바 css */
+.menubar
+{
+	display: inline-block;
+	width: 270px; 
+	height: 300px; 
+	margin-top: 50px; 
+	background-color: #F1E3C4;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.menubar h2
+{	
+	color: brown;
+}
+
+.menubar hr
+{
+	height: 10px; 
+	background-color: gold;
+	border: none;
+}
+
+.menu
+{
+	width: 270px;
+	height: 200px;
+}
+
+.menu li
+{
+	margin-top: 25px;
+}
+
+.menu a
+{
+	text-decoration: none;
+	color: brown;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+/* 관리자만 보이는 버튼 */
+.adminBtn
+{
+	height: 30px;
+	float: right;
+}
+
+.adminBtn a
+{
+	text-decoration: none;
+}
+
+/* 내용 부분 css */
+.contents
+{
+	float: right;
+	width: 930px;
+	padding: 50px 30px;
+	box-sizing: border-box;
+}
+
+.contents h3
+{
+	color: brown;
+	font-weight: bold;
+	display: inline;
+}
+
+.contents hr
+{
+	height: 10px;
+	background-color: brown;
+	border: none;
+	margin-top: 15px;
+}
+
+.list
+{
+	float: right;
+	font-size: 12px;
+}
+
+.list img
+{
+	width: 10px;
+	height: 10px;
+}

@@ -1,0 +1,260 @@
+<!-- 
+작성자: 장영재
+작성일: 23.07.10 (월)
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+String adcnt    = request.getParameter("adult");
+String chcnt    = request.getParameter("child");
+String kidcnt   = request.getParameter("kid");
+String checkin  = request.getParameter("checkin");
+String checkout = request.getParameter("checkout");
+
+if(adcnt == null) adcnt = "1";
+if(chcnt == null) chcnt = "0";
+if(kidcnt == null) kidcnt = "0";
+if(checkin == null)  checkin = "2023-07-11";
+if(checkout == null) checkout = "2023-07-12";
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>예약 1단계</title>		
+		<link rel="stylesheet" type="text/css" href="../../style/resv.css" />
+	</head>
+	<script src="../../js/jquery-3.7.0.js"></script>
+	<script src="../../js/option.js"></script>
+	<script>
+		window.onload = function(){
+			
+			btnClick();
+			
+			/* 주소창에 넘어온 값이 있으면 읽어서 객실목록을 화면에 뿌려준다.*/
+			var room  = $(".contents");
+			const urlParams = new URL(location.href).searchParams;		
+			const adult = urlParams.get('adult');
+			const child = urlParams.get('child');
+			const kid = urlParams.get('kid');
+			switch(adult)
+			{
+				case adult:
+				for(i = adult - 1; i < room.length; i++)
+				{
+					room[i].style.display = 'block';
+				}
+				break;
+				default:
+				room.style.display = 'none';
+				break;
+			}	
+		}	
+	</script>
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="stepWrap">
+			<ul class="step">
+				<li id="step1" style="background-color: brown; color: white;">1</li>&nbsp; &ndash; &nbsp;
+				<li id="step2">2</li>&nbsp; &ndash; &nbsp;
+				<li id="step3">3</li>
+			</ul>
+		</div>
+		<!-- //.stepWrap -->
+		<p>날짜, 인원 선택</p>
+		<hr id="hr1">
+		<form name="resvFrm" id="resvFrm" action="step2.jsp" method="get">
+			<table id="resvtb">
+				<tr>
+					<th width="150px;">체크인</th>
+					<th><img src="/hotel/image/moon.png" width="12px" height="12px"></th>
+					<th width="150px;">체크아웃</th>
+					<th width="100px;">객실</th>
+					<th width="100px;">성인</th>
+					<th width="100px;">어린이<img src="/hotel/image/bang.png" width="12px" height="12px" title="37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)"></th>
+					<th width="100px;">유아<img src="/hotel/image/bang.png" width="12px" height="12px" title="36개월 이하 (베트남 : 만 5세 이하)"></th>
+					<th width="130px;" rowspan="2"><input type="button" value="검색" id="searchBtn"></th>
+				</tr>
+				<tr>
+					<td class="date"><input type="text" value="<%= checkin %>" class="checkin" name="checkin" readonly></td>
+					<td>1박</td>
+					<td class="date"><input type="text" value="<%= checkout %>" class="checkout" name="checkout" readonly></td>
+					<td>1</td>
+					<td class="people"><input type="text" value="<%= adcnt %>" class="adult" readonly></td>
+					<td class="people"><input type="text" value="<%= chcnt %>" class="child" readonly></td>
+					<td class="people"><input type="text" value="<%= kidcnt %>" class="kid" readonly></td>
+				</tr>
+			</table>
+			<!-- //#resvtb -->	
+			<hr id="hr2">
+			<div id="date">
+				<div style="font-size: 50px; padding: 100px 5px 0 0;">
+					<a href="#" style="text-decoration: none;">&lt;</a>
+				</div>
+				<table border="1" class="calander">
+					<tr style="height: 30px;">
+						<td colspan="7"  style="padding-left: 10px;">7월</td>
+					</tr>
+					<tr>
+						<th>일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th>토</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<div style="width: 30px;">
+				</div>
+				<table border="1" class="calander">
+					<tr style="height: 30px;">
+						<td colspan="7" style="padding-left: 10px;">8월</td>
+					</tr>
+					<tr>
+						<th>일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th>토</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<div style="font-size: 50px; padding: 100px 0 0 5px;">
+					<a href="#" style="text-decoration: none;">&gt;</a>
+				</div>
+			</div>
+			<!-- //#date -->
+			<div id="option">
+				<span class="room">객실</span>
+				<span id="adult">
+					성인 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="count('aminus')">
+					<input type="text" value="<%= adcnt %>" class="adult" name="adult" readonly"> 
+					<input type="button" value="+" onclick="count('aplus')">
+				</span>
+				<!-- //.adult -->
+				<span id="child">
+					어린이 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="count('cminus')"> 
+					<input type="text" value="<%= chcnt %>" class="child" name="child" readonly">
+					<input type="button" value="+" onclick="count('cplus')">
+				</span>
+				<!-- //.child -->
+				<span id="kid">
+					유아 &nbsp; &nbsp; 
+					<input type="button" value="-" onclick="count('kminus')">
+					<input type="text" value="<%= kidcnt %>" class="kid" name="kid" readonly">
+					<input type="button" value="+" onclick="count('kplus')">
+				</span>
+				<!-- //.kid -->
+				<hr>
+				<p class="guide">
+					※어린이 : 37개월 이상 ~ 만 12세 이하 (베트남 : 만 6세 이상 ∼ 만 11세까지)<br>
+					※유아 : 36개월 이하 (베트남 : 만 5세 이하)
+				</p>
+			</div>
+			<!-- //#option -->
+			<%
+			RoomctrDTO dto = new RoomctrDTO();
+			for(int i = 0; i < 4; i++)
+			{
+				%>	
+				<div class="contents" id="standard">
+					<table>
+						<tr>
+							<td rowspan="3" width="400px;" class="roomImg" style="background-image: url('/hotel/image/standard.jpg');"></td>
+							<td width="200px;">Standard Room</td>
+							<td rowspan="3" width="200px;"><input type="button" class="resvBtn" value="예약하기"></td>
+						</tr>
+						<tr>
+							<td>1인용 객실</td>
+						</tr>
+						<tr>
+							<td>450,000</td>
+						</tr>
+					</table>
+				</div>
+				<!-- //.contents -->
+				<%
+			}
+			%>
+		</form>	
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>

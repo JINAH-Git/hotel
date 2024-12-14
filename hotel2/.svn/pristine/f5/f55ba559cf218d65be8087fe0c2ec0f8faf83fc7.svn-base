@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>공지사항 글쓰기</title>
+		<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="../../style/write.css" />
+	</head>
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>호텔 소개</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../map/">오는 길 소개</a></li>
+				<li><a href="../roominfo/">객실 소개</a></li>
+				<li><a href="../service/">부대 시설</a></li>
+				<li><a href="../notice/" style="background-color: yellow; padding: 0 30px;">공지사항</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>공지사항 글쓰기</h3>
+			<p class="list"><img src="/hotel/image/home.png"> &gt; 호텔 소개 &gt; 공지사항 글쓰기</p>
+			<hr>
+			<form name="writeFrm" id="writeFrm" action="writeok.jsp" method="post" enctype="multipart/form-data">
+				<div class="writetb">
+					<input type="text" name="title" id="title" placeholder="제목을 입력해주세요."><br>
+					<textarea rows="30" name="note" id="note" placeholder="내용을 입력해주세요."></textarea>
+				</div>
+				<!-- //.writetb -->
+				<input type="file" name="fname" id="fname">
+				<div class="btn">
+					<input type="button" value="취소" id="cancel" onclick="javascript:location.href='index.jsp'">
+					<input type="submit" value="등록" id="write">
+				</div>
+				<!-- //.btn -->
+			</form>
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+<%@ include file="../../include/tail.jsp" %>
+</html>

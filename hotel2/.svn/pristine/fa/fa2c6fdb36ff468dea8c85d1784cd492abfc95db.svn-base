@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>공지사항 보기</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/contents.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/write.css" />
+		<script src="/hotel/js/includeHTML.js"></script>
+	</head>
+	<header include-html="/hotel/include/head.html"></header>
+	<!-- 컨텐츠 시작하는 부분 -->
+	<section>
+		<div class="main">
+			<div class="menubar">
+				<h2>호텔 소개</h2>
+				<hr>
+				<ul class="menu">
+					<li><a href="/hotel/info/map/">오는 길 소개</a></li>
+					<li><a href="/hotel/info/roominfo/">객실 소개</a></li>
+					<li><a href="/hotel/info/service/">부대 시설</a></li>
+					<li><a href="/hotel/info/notice/" style="background-color: yellow; padding: 0 30px;">공지사항</a></li>
+				</ul>
+				<!-- //.menu -->
+			</div>
+			<!-- //.menubar -->
+			<div class="contents">
+				<h3>공지사항 내용</h3>
+				<p class="list"><img src="/hotel/image/home.png"> &gt; 호텔 소개 &gt; 공지사항 내용</p>
+				<hr>
+				<div class="writetb">
+					<input type="text" name="title" id="title" placeholder="제목을 입력해주세요." value="공지사항10입니다." readonly><br>
+					<textarea rows="30" name="note" id="note" placeholder="내용을 입력해주세요." readonly>공지사항 내용입니다.</textarea>
+				</div>
+				<!-- //.writetb -->
+				<div class="btn">
+					<input type="button" value="목록" id="cancel" onclick="javascript:location.href='index.html'">
+					<input type="submit" value="삭제" id="delete" onclick="javascript:location.href='delete.html'">
+					<input type="submit" value="수정" id="modify" onclick="javascript:location.href='modify.html'">
+				</div>
+				<!-- //.btn -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //.main -->
+	</section>
+	<!--  컨텐츠 끝나는 부분 -->
+	<footer include-html="/hotel/include/tail.html" ></footer>
+	<script>
+	   includeHTML();
+	</script>
+</html>

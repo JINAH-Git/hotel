@@ -1,0 +1,83 @@
+<!-- 
+23-07-10 성재 | jsp 작성함.
+ -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="../../include/head.jsp" %>
+<link rel="stylesheet" type="text/css" href="/hotel2/style/contents.css" />
+<link rel="stylesheet" type="text/css" href="/hotel2/style/eventview.css" />
+<%
+String category = request.getParameter("category");
+if(category == null) category = "E";
+String curPage = request.getParameter("page");
+if(curPage == null) curPage = "1";
+String ano = request.getParameter("ano");
+if(ano == null){response.sendRedirect("index.jsp"); return;}
+
+AdminDTO dto = new AdminDTO();
+//조회수를 증가시킬 필요가 있습니까?
+AdminVO vo = dto.read(ano, true);
+
+
+%>
+<div class="main">
+	<div class="menubar">
+		<h2>프로모션</h2>
+		<hr>
+		<ul class="menu">
+			<li><a href="../event/index.jsp?category=E" style="background-color: white; padding: 0 30px;">이벤트</a></li>
+			<li><a href="../review/index.jsp?category=R">리뷰</a></li>
+		</ul>
+		<!-- //.menu -->
+	</div>
+	<!-- //.menubar -->
+	<div class="contents">
+		<h3>이벤트</h3>
+		<p class="list"><img src="/hotel2/image/home.png" width="20px;" height="20px;"> &gt; 프로모션 &gt; 이벤트</p>
+		<hr>
+		<div class="view_inner">
+			<table border="0" class="writetbl" style="width:700px; height:300px; border-collapse:collapse;">
+				<tr>
+					<td id="btitle" name="btitle" style="width:700px; height:50px; border:none; outline:none; font-size:18px;" readonly="readonly">
+						<%= vo.getAtitle() %>
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td id="bwriter" name="bwriter" style="width:700px; height:25px; border:none; outline:none; text-align:right;" readonly="readonly">
+						작성자: <%= vo.getName() %> | <%= vo.getAwdate() %>
+					</td>
+				</tr>
+				<tr>
+					<td id="bnote" name="bnote" style="width:700px; border:none; outline:none;" readonly="readonly">
+					<%= vo.getAnote() %>
+					</td>
+				</tr>
+				<tr>
+					<!-- 첨부파일 등록 구역 -->
+					<td style="height:25px;">
+						<%
+							if(!vo.getAfname().equals(""))
+							{
+								%><a href="down.jsp?no=<%= vo.getAno() %>"><%= vo.getAfname() %></a><%
+							}else
+							{
+								%>등록된 첨부파일이 없습니다.<%
+							}
+						%>
+					</td>
+				</tr>
+			</table>
+			<div class="btn_area">
+				<a href="index.jsp" style="position:relative; left:250px"><input type="submit" class="list_btn" value="목록"></a>
+				<a href="modify.jsp?category=<%= category %>&ano=<%= vo.getAno() %>&page=<%= page %>" style="position:relative; left:290px"><input type="button" class="modify_btn" value="수정"></a>
+				<a href="javascript:DoDelete('<%= ano %>');" style="position:relative; left:330px"><input type="submit" class="delete_btn" value="삭제"></a>
+			</div>
+		</div>
+		<!-- //.view_inner -->
+	</div>
+	<!-- //.contents -->
+</div>
+<!-- //.main -->
+<!--  컨텐츠 끝나는 부분 -->
+<%@ include file="../../include/tail.jsp"%>

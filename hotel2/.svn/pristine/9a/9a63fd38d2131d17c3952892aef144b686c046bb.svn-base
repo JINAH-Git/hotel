@@ -1,0 +1,151 @@
+//예약 정보 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+package hotel.dto;
+
+import java.util.ArrayList;
+
+import hotel.dao.DBManager;
+import hotel.vo.*;
+
+public class ReserDTO extends DBManager
+{
+	//C: 예약하기
+	public void insert()
+	{
+		ReserVO vo = new ReserVO();
+		this.DBOpen();
+		String sql = "";
+		sql  = "insert into reservation(totalprice,checkindate,checkoutdate,request,adcnt,chcnt,kidcnt,email,rtype) ";
+		sql += "values('";
+		sql += vo.getTotalprice() + "','";
+		sql += vo.getCheckindate() + "','";
+		sql += vo.getCheckoutdate() + "','";
+		sql += vo.getRequest() + "','";
+		sql += vo.getAdcnt() + "','";
+		sql += vo.getChcnt() + "','";		
+		sql += vo.getKidcnt() + "','";		
+		sql += vo.getEmail() + "','";		
+		sql += vo.getRtype() + "')" ;
+		System.out.println(sql);
+		this.RunSQL(sql);
+		
+		//예약번호를 받는다.
+		sql = "select last_insert_id() as resvno ";
+		this.RunSelect(sql);
+		if(this.Next() == true)
+		{
+			vo.setResvno(Integer.parseInt(this.getValue("resvno")));
+		}
+		this.DBClose();
+	}
+	
+	//R: 예약조회
+	public ReserVO read(int resvno)
+	{
+		ReserVO vo = new ReserVO();
+		this.DBOpen();
+		String sql = "";
+		sql  = "select resvno,totalprice,checkindate,checkoutdate,request,resvdate,adcnt,chcnt,kidcnt,email,rtype ";
+		sql += "where resvno='" + resvno + "' ";
+		this.RunSelect(sql);
+		if(this.Next() == true)
+		{
+			vo.setTotalprice(this.getValue("totalprice"));
+			vo.setCheckindate(this.getValue("checkindate"));
+			vo.setCheckoutdate(this.getValue("checkoutdate"));
+			vo.setRequest(this.getValue("request"));
+			vo.setAdcnt(this.getValue("adcnt"));
+			vo.setChcnt(this.getValue("chcnt"));
+			vo.setKidcnt(this.getValue("kidcnt"));
+			vo.setEmail(this.getValue("email"));
+			vo.setRtype(this.getValue("rtype"));
+		}
+		this.DBClose();
+		
+		return vo;
+	}
+	
+	//R: 예약 전체 수 조회
+	public int gettotal()
+	{
+		int total = 0;
+		this.DBOpen();
+		String sql = "";
+		sql = "select count(*) as total from reservation ";
+		System.out.println(sql);
+		this.RunSelect(sql);		
+		if(this.Next() == true)
+		{
+			total = Integer.parseInt(this.getValue("total"));
+		}
+		this.DBClose();
+		
+		return total;
+	}
+	
+	//R: 총 결제가격
+	public String gettotalprice(ReserVO vo)
+	{
+		String totalprice = "";
+		
+		String sql = "";
+		sql  = "select adprice,chprice from room roompricectrl ";
+		sql += "where rtype = '" + vo.getRtype() + "' ";
+		System.out.println(sql);
+		this.RunSelect(sql);
+		if(this.Next() == true)
+		{
+			int adcnt = Integer.parseInt(vo.getAdcnt());
+			int chcnt =  Integer.parseInt(vo.getChcnt());
+			int adprice = Integer.parseInt(this.getValue("adprice"));
+			int chprice = Integer.parseInt(this.getValue("chprice"));
+			totalprice = Integer.toString(adcnt * adprice + chcnt * chprice);
+		}
+	
+		return totalprice;
+	}
+	//R: 예약목록(페이징처리)
+	public ArrayList<ReserVO> list(int pageNo)
+	{
+		ArrayList<ReserVO> list = new ArrayList<ReserVO>();
+		ReserVO vo = new ReserVO();
+		
+		int startNo = (pageNo - 1) * 10;
+		this.DBOpen();
+		String sql = "";
+		sql = "select resvno,totalprice,checkindate,checkoutdate,request,resvdate,adcnt,chcnt,kidcnt,email,rtype";
+		sql += "from reservation ";
+		sql += "order by checkindate desc ";
+		sql += "limit '" + startNo + ",10 ";
+		System.out.println(sql);
+		this.RunSelect(sql);
+		while(this.Next() == true)
+		{
+			vo.setTotalprice(this.getValue("totalprice"));
+			vo.setCheckindate(this.getValue("checkindate"));
+			vo.setCheckoutdate(this.getValue("checkoutdate"));
+			vo.setRequest(this.getValue("request"));
+			vo.setAdcnt(this.getValue("adcnt"));
+			vo.setChcnt(this.getValue("chcnt"));
+			vo.setKidcnt(this.getValue("kidcnt"));
+			vo.setEmail(this.getValue("email"));
+			vo.setRtype(this.getValue("rtype"));
+			list.add(vo);
+		}
+		this.DBClose();
+		
+		return list;
+	}
+	
+	
+	//D: 예약취소
+	public void cancel(int resvno)
+	{
+		this.DBOpen();
+		String sql = "";
+		sql  = "delete from reservation ";
+		sql += "where resvno = '" + resvno + "' ";
+		System.out.println(sql);
+		this.RunSQL(sql);
+		this.DBClose();
+	}
+}

@@ -1,0 +1,53 @@
+@charset "EUC-KR";
+
+.room
+{
+	position: relative;
+	z-index: 1;
+}
+
+#standard ,#double, #family, #suite
+{
+	width: 350px; 
+	height: 200px; 
+	border: 3px solid #F1E3C4; 
+	border-radius: 5%;
+	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 500;
+	opacity: 0.8;
+}
+
+#standard:hover ,#double:hover, #family:hover, #suite:hover
+{
+	opacity: 1;
+}
+
+#standard
+{
+	top: 50px;
+	left: 50px;	
+	background-image: url("/hotel/image/standard.jpg");
+}
+
+#double
+{
+	top: 50px;
+	left: 470px;
+	background-image: url("/hotel/image/double.jpg");	
+}
+
+#family
+{
+	top: 310px;
+	left: 50px;
+	background-image: url("/hotel/image/family.jpg");	
+}
+
+#suite
+{
+	top: 310px;
+	left: 470px;
+	background-image: url("/hotel/image/suite.jpg");	
+}

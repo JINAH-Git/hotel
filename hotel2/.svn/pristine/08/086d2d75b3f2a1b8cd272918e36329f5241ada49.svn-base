@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>예약을 원하시는 날짜를 선택해 주세요</title>
+		<link rel="stylesheet" type="text/css" href="/hotel2/style/calendar.css" />
+		<script src="/hotel2/js/calendar.js"></script>
+	</head>
+	<body>
+	<table id="calendar" align="center" width="600px" height="300px;">
+			<tr>
+				<td align="center"><label onclick="prevCalendar()"> ◀ </label></td>
+				<td colspan="5" align="center" id="calendarTitle">yyyy년 m월</td>
+				<td align="center"><label onclick="nextCalendar()"> ▶ </label></td>
+			</tr>
+			<tr>
+				<td align="center" style="color: red;">일</td>
+				<td align="center">월</td>
+				<td align="center">화</td>
+				<td align="center">수</td>
+				<td align="center">목</td>
+				<td align="center">금</td>
+				<td align="center" style="color: blue;">토</td>
+			</tr>
+			<script>buildCalendar();</script>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,6 @@
+//예약 정보 자료를 담기위한 vo(value object)클래스
+package hotel.vo;
+
+public class ReserVO {
+
+}

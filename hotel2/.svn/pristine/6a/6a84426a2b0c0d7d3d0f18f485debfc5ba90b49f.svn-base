@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>오시는 길 소개</title>
+		<link rel="stylesheet" type="text/css" href="../../style/contents.css" />
+	</head>
+<%@ include file="../../include/head.jsp" %>
+<section>
+	<div class="main">
+		<div class="menubar">
+			<h2>호텔 소개</h2>
+			<hr>
+			<ul class="menu">
+				<li><a href="../map/" style="background-color: yellow; padding: 0 30px;">오는 길 소개</a></li>
+				<li><a href="../roominfo/">객실 소개</a></li>
+				<li><a href="../service/">부대 시설</a></li>
+				<li><a href="../notice/">공지사항</a></li>
+			</ul>
+			<!-- //.menu -->
+		</div>
+		<!-- //.menubar -->
+		<div class="contents">
+			<h3>오시는 길 소개</h3>
+			<p class="list"><img src="/hotel2/image/home.png" width="20px;" height="20px;"> &gt; 호텔 소개 &gt; 오시는 길 소개</p>
+			<hr>
+			<img src="/hotel/image/map.png" style="width:870px; box-sizing: border-box;">
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //.main -->
+</section>
+
+<%@ include file="../../include/tail.jsp" %>

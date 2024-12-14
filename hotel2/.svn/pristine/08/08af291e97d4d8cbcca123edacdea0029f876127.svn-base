@@ -1,0 +1,163 @@
+/* 달력(calendar)에 관한 js */
+
+var today = new Date();
+var date = new Date();
+//사용자가 클릭한 셀 객체 저장
+var selectedCell;
+//오늘 기준으로 불현하는 월. 일 객체
+var realMonth = date.getMonth()+1;
+var realToDay = date.getDate();
+//사용자가 클릭한 일자의 월, 일 객체
+var selectedMonth = null;
+var selectedDate = null;
+
+function buildCalendar()
+{
+	var row = null;
+	var cnt = 0;
+	var calendarTable = document.getElementById("calendar");
+	var calendarTableTitle = document.getElementById("calendarTitle");
+	calendarTableTitle.innerHTML = today.getFullYear()+"년 "+(today.getMonth()+1)+"월";
+  
+	//이번 달의 첫째 날과 마지막 날을 구한다.
+	var firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
+	var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0);
+	
+	while(calendarTable.rows.length > 2)
+	{
+		calendarTable.deleteRow(calendarTable.rows.length -1);
+	}
+	
+	//이번 달의 첫째 날의 요일을 구해서 시작점을 잡는다.
+	row = calendarTable.insertRow();
+	for(i = 0; i < firstDate.getDay(); i++)
+	{
+		cell = row.insertCell();
+		cnt += 1;
+	}
+	
+	//오늘 날짜와 관련된 함수
+	y = today.getFullYear();
+	m = ( 1 + today.getMonth() );
+	d = today.getDate();
+	m = m >= 10 ? m : '0' + m; 	//1~9월은 앞에 0을 붙여준다.
+	d = d >= 10 ? d : '0' + d; //1~9일은 앞에 0을 붙여준다.
+	ymd = y + m + d; //오늘 날짜를 8자리 형식으로 구한다.
+
+	//이번 달의 마지막날까지 숫자를 집어넣는다.
+	row1 = calendarTable.insertRow();
+	for(i = 1; i <= lastDate.getDate(); i++)
+	{
+		cell = row.insertCell();
+		cnt += 1;		
+		
+		i = i >= 10 ? i : '0' + i; //1~9일은 앞에 0을 붙여준다.
+		/* id는 값이 다르기 때문에 for문의 i를 넣는 것이고 오늘 날짜 getDate()로 따로 구해야한다. */
+
+		ymi = y + m +  i; //클릭한 셀의 id에 넣을 날짜 형식 ex)20001122 8자리로 나오게 만든다.
+		
+		//셀의 형식
+		cell.setAttribute('id',ymi); //ymi를 넣어야 id가 각각 다르게 나온다.
+		cell.innerHTML = i;
+		cell.align = "center";
+		cell.style.width = '50px';
+		cell.style.cursor = 'pointer';
+		
+		//일요일은 빨간 색
+	    if (cnt % 7 == 1) 
+	    {
+	    	cell.innerHTML = "<font color=red>" + i + "</font>";
+	    }
+	
+	    //토요일은 파란 색
+	    if (cnt % 7 == 0)
+	    {
+	    	cell.innerHTML = "<font color=blue>" + i + "</font>";
+	    	row = calendar.insertRow();
+	    }	
+	    
+	    //이전 날짜 표시
+//		if(cell.getAttribute('id') < ymd) //셀의 id가 오늘의 날짜와 같을 때
+//		{
+//			cell.setAttribute('class','other');
+//		}
+//		
+//	    //오늘 날짜 표시
+//		if(cell.getAttribute('id') == ymd) //셀의 id가 오늘의 날짜와 같을 때
+//		{
+//			cell.innerHTML = '오늘';
+//			cell.style.background = 'brown';
+//		}
+	    
+		//클릭한 셀은 배경색이 바뀌게한다.(클래스 추가)
+	    //클릭한 셀의 날짜를 구하고 처음 클릭한 날짜는 체크인에 담고 두번째 클릭한 날짜는 체크아웃에 담는다.
+		cell.onclick = function()
+		{
+			//오늘 이전의 날짜에 체크인을 하려 할 때 
+			if(this.getAttribute('id') < ymd)
+			{
+				alert("지난 날짜에는 예약할 수 없습니다.");
+				return;
+			//오늘이후의 날짜에 체크인을 할때
+			}else
+			{
+				//이미 체크인 클래스가 있다면
+				if(calendarTable.getElementsByClassName('checkin').length != 0) 
+				{ 		
+					//이미 체크아웃 클래스가 있다면
+					if(calendarTable.getElementsByClassName('checkout').length != 0)
+					{
+						alert("초기화할꺼면 새로고침 ");
+						return;
+					}else
+					{
+						if($("#checkin").val() >= this.getAttribute('id'))
+						{
+							alert("체크아웃 날짜는 체크인 날짜 이후로만 설정가능합니다. ");
+							return;
+						}else
+						{
+							//체크아웃 클래스 추가
+							document.getElementById(this.getAttribute('id')).classList.add('checkout');
+							$(".checkout").html("체크아웃");
+							$("#checkout").val(this.getAttribute('id'));
+							night = $("#checkout").val() - $("#checkin").val() + "박";
+							$("#night").val(night);
+						}
+					}
+				}
+				//체크인 클래스가 없다면
+			  	else 
+			  	{    
+			  		//체크인 완료
+			  		document.getElementById(this.getAttribute('id')).classList.add('checkin');
+			  		$(".checkin").html("체크인");
+			  		$("#checkin").val(this.getAttribute('id'));	
+			  	}			
+			}
+		}
+	}
+	
+	//달력의 마지막날 뒤 빈칸 행으로 채우기
+	if(cnt % 7 != 0)
+	{
+		for(i = 0; i < 7 - (cnt % 7); i++)
+		{
+			cell = row.insertCell();
+		}
+	}
+}
+
+
+function prevCalendar()
+{
+	today = new Date(today.getFullYear(), today.getMonth()-1, today.getDate());
+	buildCalendar();
+}
+
+function nextCalendar()
+{
+	today = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+	buildCalendar();
+}
+

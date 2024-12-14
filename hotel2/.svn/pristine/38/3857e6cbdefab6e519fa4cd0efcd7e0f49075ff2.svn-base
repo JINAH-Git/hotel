@@ -1,0 +1,171 @@
+/* 검색 옵션을 관리하는 js */
+
+//객식목록 이벤트
+function viewroom()
+{
+	/* 주소창에 넘어온 값이 있으면 읽어서 객실목록을 화면에 뿌려준다.*/
+	var room  = $(".contents");
+	const urlParams = new URL(location.href).searchParams;		
+	const adult = urlParams.get('adult');
+	const child = urlParams.get('child');
+	const kid = urlParams.get('kid');
+	switch(adult)
+	{
+		case adult:
+		for(i = adult - 1; i < room.length; i++)
+		{
+			room[i].style.display = 'block';
+		}
+		break;
+	};
+}
+
+
+//처음 화면에 보이는 날짜
+function viewdate()
+{
+	//오늘 날짜 계산
+	today = new Date();
+	y = today.getFullYear();
+	m = today.getMonth() + 1;
+	d = today.getDate();
+	w = today.getDay();
+
+	m = m >= 10 ? m : '0' + m; 	//1~9월은 앞에 0을 붙여준다.
+	d = d >= 10 ? d : '0' + d; //1~9일은 앞에 0을 붙여준다.
+	ymd = y + m + d; //오늘 날짜를 8자리 형식으로 구한다.
+	$("#checkin").val(ymd);
+	
+	//내일 날짜 계산
+	tmr = new Date(today.setDate(today.getDate()+1));
+	tmry = tmr.getFullYear();
+	tmrm = tmr.getMonth() + 1;
+	tmrd = tmr.getDate();
+	tmrw= tmr.getDay();
+	tmrm = tmrm >= 10 ? tmrm : '0' + tmrm; 	//1~9월은 앞에 0을 붙여준다.
+	tmrd = tmrd >= 10 ? tmrd : '0' + tmrd; //1~9일은 앞에 0을 붙여준다.
+	tmrymd = tmry + tmrm + tmrd; //오늘 날짜를 8자리 형식으로 구한다.
+	$("#checkout").val(tmrymd);
+}
+
+//클릭 이벤트
+function btnclick()
+{
+	
+	//날짜쪽을 클릭하면 날짜 옵션을 뜨게 한다.
+	$(".resvdate").click(function(){
+		$("#option").css('display','none');
+		if($("#date").css('display') == 'none')
+		{
+			$("#date").css('display','flex');
+		}else
+		{
+			$("#date").css('display','none');
+		}
+	});	
+	
+	//인원쪽을 클릭하면 인원 옵션을 뜨게 한다.
+	$(".people").click(function(){
+		$("#date").css('display','none');
+		if($("#option").css('display') == 'none')
+		{
+			$("#option").css('display','block');
+		}else
+		{
+			$("#option").css('display','none');
+		}
+	});
+
+	//검색을 클릭하면 조건에 해당하는 객실 리스트를 보여준다.
+	$("#searchBtn").click(function(){
+		var room  = $(".contents");
+		room.css('display','none');
+		var adult = $(".adult").val();
+		switch(adult)
+		{
+			case adult:
+			for(i = adult - 1; i < room.length; i++)
+			{
+				room[i].style.display = 'block';
+			}
+			break;
+			
+			default:
+			room.style.display = 'none';
+			break;
+		}
+	})	
+}
+
+//예약하기를 누르면 날짜,인원,선택한 객실 정보를 step2로 넘긴다.
+function resv(rtype)
+{
+	var checkin = $("#checkin").val();
+	var checkout = $("#checkout").val();
+	var adult = $(".adult").val();
+	var child = $(".child").val();
+	var kid = $(".kid").val();
+	
+	url  = "step2.jsp?";
+	url += "checkin=" + checkin; 
+	url += "&checkout=" + checkout;
+	url += "&adult=" + adult;
+	url += "&child=" + child;
+	url += "&kid=" + kid;
+	url += "&rtype=" + rtype;
+	location.href = url;
+}
+
+/* 검색 옵션에서 인원 설정 */
+function count(type)
+{
+	let adcnt = $(".adult").val();
+	let chcnt = $(".child").val();
+	let kidcnt = $(".kid").val();
+	
+	if(type == 'aminus')
+	{
+		adcnt--;
+		if(adcnt < 1)
+		{
+			alert("성인은 최소 1인 포함되어야 합니다.");
+			adcnt++;
+			return;
+		}
+	}else if(type == 'aplus')
+	{
+		adcnt++;
+	}else if(type == 'cminus')
+	{
+		chcnt--;
+		if(chcnt < 0)
+		{
+			chcnt++;
+			return;
+		}
+	}else if(type == 'cplus')
+	{
+		chcnt++;
+	}else if(type == 'kminus')
+	{
+		kidcnt--;
+		if(kidcnt < 0)
+		{
+			kidcnt++;
+			return;
+		}
+	}else if(type == 'kplus')
+	{
+		kidcnt++;
+	}
+	
+	if(parseInt(adcnt) + parseInt(chcnt) + parseInt(kidcnt) > 4)
+	{
+		alert("예약은 성인과 소인 포함 최대 4인까지 가능합니다.");
+		return;
+	}
+	
+	$(".adult").val(adcnt);
+	$(".child").val(chcnt);
+	$(".kid").val(kidcnt);
+}

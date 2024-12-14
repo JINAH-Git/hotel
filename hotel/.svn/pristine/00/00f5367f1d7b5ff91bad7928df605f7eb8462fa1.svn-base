@@ -1,0 +1,41 @@
+@charset "EUC-KR";
+
+.adminbtn
+{
+	height: 30px;
+	position: absolute;
+	top: 20px;
+	right: 0;
+}
+
+.adminbtn a
+{
+	text-decoration: none;
+}
+
+.contents h3
+{
+	color: brown;
+	font-weight: bold;
+	display: inline;
+}
+
+.contents hr
+{
+	height: 10px;
+	background-color: gold;
+	border: none;
+	margin-top: 20px;
+}
+
+.list
+{
+	float: right;
+	font-size: 12px;
+}
+
+.list img
+{
+	width: 10px;
+	height: 10px;
+}

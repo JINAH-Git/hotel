@@ -1,0 +1,23 @@
+@charset "EUC-KR";
+
+body
+{
+	display: flex;
+}
+
+.period
+{
+	background-color: yellowgreen;
+	opacity: 0.8;
+}
+
+.other
+{
+	background-color: gray !important;
+	opacity: 0.5;
+}
+
+.checkin, .checkout
+{
+	background-color: yellowgreen !important;
+}

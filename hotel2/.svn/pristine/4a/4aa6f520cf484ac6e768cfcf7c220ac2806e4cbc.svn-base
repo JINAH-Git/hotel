@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>    
+<%@ page import="hotel.dao.*" %>
+<%@ page import="hotel.dto.*" %>
+<%@ page import="hotel.vo.*" %>
+<%
+ReserDTO dto = new ReserDTO();
+ReserVO vo = new ReserVO();
+vo.setTotalprice(request.getParameter("totalprice"));
+vo.setCheckindate(request.getParameter("checkindate"));
+vo.setCheckoutdate(request.getParameter("checkoutdate"));
+vo.setRequest(request.getParameter("req"));
+vo.setAdcnt(request.getParameter("adcnt"));
+vo.setChcnt(request.getParameter("chcnt"));
+vo.setKidcnt(request.getParameter("kidcnt"));
+vo.setEmail(request.getParameter("email"));
+vo.setRtype(request.getParameter("rtype"));
+
+if(request.getParameter("totalprice") == null)
+{
+	%>
+	<script>
+		alert("데이터가 없습니다.");
+		location.href = "../../index.jsp";
+	</script>
+	<%
+}else
+{
+	//예약정보 등록
+	dto.insert();
+	response.sendRedirect("../confirm.jsp");	
+}
+%>

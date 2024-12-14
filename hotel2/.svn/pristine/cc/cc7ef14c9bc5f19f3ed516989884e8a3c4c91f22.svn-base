@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+  <title>MHDP Full Calendar</title>
+<link rel="stylesheet" href="/hotel2/style/calendar.css">
+</head>
+<body>
+<section>
+	<div class="calendar">
+    <div class="calheader">
+      <div class="year-month"></div>
+      <div class="nav">
+        <button class="nav-btn go-prev">&lt;</button>
+        <button class="nav-btn go-today">Today</button>
+        <button class="nav-btn go-next">&gt;</button>
+      </div>
+    </div>
+    <div class="calbody">
+      <div class="days">
+        <div class="day">일</div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+        <div class="day">토</div>
+      </div>
+      <div class="dates"></div>
+    </div>
+  </div>
+  <script src="/hotel2/js/calendar.js"></script>
+</section>
+</body>
+</html>

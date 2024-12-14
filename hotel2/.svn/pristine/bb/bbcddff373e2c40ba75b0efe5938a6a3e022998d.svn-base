@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- 
+작성자: 김진아
+작성일: 23.07.05.수
+로그아웃 처리 기능 
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria Hotel</title>
+	</head>
+	<body>
+		<script>
+			//alert창 띄우기
+			window.onload = function()
+			{
+				document.location = "../index.jsp";
+				
+			}
+		</script>
+	</body>
+</html>

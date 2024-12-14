@@ -1,0 +1,80 @@
+@charset "EUC-KR";
+
+#noticetb
+{
+	width: 700px;
+	margin: 50px auto 0;	
+}
+
+ #noticetb a
+{
+	text-decoration: none;
+	color: #000;
+}
+
+/* 제목에 마우스를 갖다대면 줄 생기기*/
+td:nth-child(2):hover
+{
+	text-decoration: underline;
+}
+
+
+/* 테이블의 맨 위(th) */
+th
+{
+	background: #F1E3C4;
+}
+
+/* 테이블의 선 표시*/
+#noticetb td
+{	
+	height: 30px;
+	border-bottom: 2px solid #F1E3C4;
+}
+
+/* 테이블의 게시물 번호 칸 길이 조정*/
+th:nth-child(1)
+{
+	width: 100px;
+}
+
+/* 테이블의 제목 칸 길이 조정*/
+th:nth-child(2)
+{
+	width: 300px;
+}
+
+/* 테이블의 작성자 칸 길이 조정*/
+th:nth-child(3)
+{
+	width: 110px;
+}
+
+/* 테이블의 작성일 칸 길이 조정*/
+th:nth-child(4)
+{
+	width: 110px;
+}
+
+/* 텍스트 정렬 */
+td:nth-child(3), td:nth-child(4)
+{
+	text-align: center;
+}
+
+td:nth-child(2)
+{
+	text-align: left;
+	padding: 0 10px;	
+}
+
+td:nth-child(1), td:nth-child(5)
+{
+	text-align: right;
+	padding: 0 10px;
+}
+
+#pagetb
+{
+	margin: 20px auto 0;
+}

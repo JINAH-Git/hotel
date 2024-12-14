@@ -1,0 +1,619 @@
+<!-- 
+작성자: 김진아
+작성일: 23.06.30.금, 23.07.03.월, 23.07.05.수
+1. 회원가입 html 잡기, 2. 이어서 틀 잡기
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Alegria | 회원정보 변경</title>
+		<link rel="stylesheet" type="text/css" href="/hotel/style/head.css" />
+		<link rel="stylesheet" type="text/css" href="/hotel/style/tail.css" />
+	</head>
+	<style>
+		.main
+		{
+			background-color:white;
+			width: 1200px;
+			margin: 53px auto;
+		}
+		/* 1 본인 인증, 2 약관동의 및 회원정보 단계 표시 시작  */
+    	.stepwrap 
+    	{
+		    position: absolute;
+		    margin: 8px auto;
+		    display:inline-block;
+		    width:1200px;
+		    height:35px;
+		}
+		.stepwrapline-solid
+		{
+			border:1.5px;
+			border-top: 1.5px solid gray;
+			width:25px;
+		}
+		.txtbox 
+		{
+			background-color:#f9f9f9;;
+			padding: 63px 50px;
+			text-align:center;
+			margin-top: 50px;
+		}
+		.txtboxtitle
+		{
+			font-size:24px;
+		    line-height: 38px;
+		    font-weight: 500;
+		    letter-spacing: -.025em;
+		    text-align: center;
+		}
+		#join_btn
+		{
+			margin: 15px 0 15px;
+		    padding: 10;
+		    font-size: 18px;
+		    font-weight: 15;
+		    line-height: 60px;
+	        background-color: #000 !important;
+    		color: #fff !important;
+		    height: 65px;
+		}
+		#on
+		{
+			 background-color: RED;
+		}
+		/* 회원가입 표지 시작 */
+		.introduction
+		{
+			width:1200px;
+			height:150px;
+			border: 1px solid #F9F9F9;
+		}
+		.introhead
+		{
+			width:1400px;
+			text-align: left;
+			font-size:35px;
+		}
+		/* Alegria 오신 것을 환영합니다. 문구 */
+		.introtext
+		{
+		   display: block;
+		   margin-block-start: 1em;
+		   margin-block-end: 1em;
+		   margin-inline-start: 0px;
+		   margin-inline-end: 0px;
+	       font-family: notokrL, gothamL, playfair;
+	       margin-left:38px;
+		}
+		.first
+		{
+			width:10%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 65px;
+		}
+		.second
+		{
+			width:10%;
+			box-sizing: border-box;
+	     	position:absolute;
+			top: 0;
+			left: 165px;
+		}
+		
+		.third
+		{
+			width:20%;
+			box-sizing: border-box;
+			position:absolute;
+			top: 0;
+			left: 340px;
+		}
+		.firstimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:white;
+			color:gray;
+			font-weight: bold;
+			position:absolute;
+			top: 0;
+			left: 44px;
+		}
+		.thirdimge
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			text-align: center;
+			background-color:black;
+			color:white;
+			font-weight: bold;
+			border: 1px solid gray;
+			position:absolute;
+			top: 0;
+			left: 320px;
+		}
+		/* 회원가입 약관 시작 */
+		.joindostart
+		{
+			height:830px;
+			background-color: white;
+			position: relative;
+		    box-sizing: content-box;
+		    border: 1px soild gray;
+		    padding: 30px 50px;
+		    margin-top: 40px;
+		}
+		.jointotalline
+		{
+			margin-top:40px;
+			border: 1px thin gray;
+		}
+		.joindochecktext1
+		{
+			padding-left: 30px;
+		}
+		.jointotalline2
+		{
+			border: 1px thin gray;
+		}
+		.joindochecktext2
+		{
+			padding-left: 30px;
+		}
+		/* 커멘트 */
+		.joindochecktext3
+		{
+			padding-left: 10px;
+		}
+		/* 회원가입 약관, 필수정보 입력 전체 시작 */ 
+		.jointotal
+		{
+			width: 1200px;
+		}
+		.table1 
+		{
+			text-align: center;		
+			margin: 0 10px;
+			border-collapse: collapse;
+		}
+		.table1 tr
+		{
+			padding: 16px;
+		    font-size: 17px;
+		    border-top: 1px solid #000;
+		    border-bottom: 1px solid #ccc;
+		    text-align: center;
+		    text-transform: uppercase;
+		    font-family: gothamM, notokrM;
+		    color: #333;
+		    background-color:#FFFFFF;
+		}
+		.table td
+		{
+			font-
+		}
+		.table2
+		{
+			margin-left:20px;
+			width:1060px;
+			heigth:40px;
+			text-align:center;
+			border-collapse: collapse;
+		}
+		
+		/*  */
+		.joindochecktexthead1
+		{
+			background-color: #F9F9F9;
+		}
+		/*  */
+		.joindochecktexthead2
+		{
+			background-color: #F9F9F9;
+			
+		}
+		/* 필수정보 입력 전체 */
+		.infodostart 
+		{
+			border:3px solid #F9F9F9;
+			height:800px;
+		}
+		.infodostart span
+		{
+			font-size:10;
+		}
+		/* 필수정보 입력란  */
+		.necesse
+		{
+			width:1100px;
+			margin-left: 45px;
+		}
+		/* 영문성명 코멘트 */
+		.infodovalue1 
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 250px;
+			
+		}
+		/* KOREAN NAME 코멘트 */
+		.infodovalue2
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 680px;
+		}
+		.englishname
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 150px;
+		}
+		
+		.koreanname
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 175px;
+		}
+		.name
+		{
+			margin-left: 95px;
+		}
+		/* 생년월일 커멘트 */
+		.infodovalue3
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-left: 250px;
+			margin-top:20px;
+		}
+		/* 생년월일 SELECT 구간 */
+		.birth
+		{
+			margin-left: 250px;
+			width: 200px;
+		    height: 10px;
+		}
+		/* 이메일 코멘트 */
+		.infodovalue4
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-top:30px;
+			margin-left: 250px;
+		}
+		/* 이메일 입력 구간 */
+		.emailid
+		{
+		   background-color:white;
+		   width: 620px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 250px;
+		}
+		/* 비밀번호 코멘트 구간 */
+		.infodovalue5
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+			margin-left: 250px;
+		}
+		/* 비밀번호 확인 코멘트 구간 */
+		.infodovalue6
+		{
+			color:#B01414;
+			display:inline-block;
+			position:absolute;
+		 	margin-left: 680px;
+		}
+		/* 비밀번호 입력 구간 */
+		.pw 
+		{
+		   background-color: white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 245px;
+		}
+		.pwcheck
+		{
+		   background-color:white;
+		   width: 200px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 175px;
+		}
+		/* gender 코멘트 */
+		.infodovalue7
+		{
+			color:#B01414;
+			display:inline-block;
+			position: absolute;
+			margin-left: 250px;
+		}
+		/* 내국인, 외국인 코멘트 */
+		.infodovalue8
+		{
+			color:#B01414;
+			padding-left: 280px;
+			display:inline-block;
+			position: absolute;
+			padding-left: 670px;
+		}
+		/* 성별 div 영역 */
+		.gender
+		{
+		   width: 300px;
+		   height: 10px;
+		   padding: 10px;
+		   margin-bottom: 25px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       position:absolute;
+	       margin-left: 250px;	
+	       display:inline-block;
+		}
+		/* 내국인, 외국인 div영역 */
+		.koreanforeigner
+		{
+		   width: 300px;
+		   height: 10px;
+		   padding: 10px;
+		   margin-bottom: 25px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       display:inline-block;
+	       position:absolute;
+	       margin-left: 650px;	
+		}
+		/* NUMBER 코멘트 */
+		.infodovalue9
+		{
+			color:#B01414;
+			display:inline-block;
+			margin-top: 38px;
+			margin-left: 250px;
+		}
+		
+		/* 번호 입력 테스트 구간 */
+		.numbertext
+		{
+		   background-color: white;
+		   width: 620px;
+		   height: 10px;
+		   padding: 20px;
+	       border: solid #ccc;
+	       border-width: 0 0 1px 0;
+		   margin-bottom: 15px;
+	       font-size: 18px;
+	       vertical-align: middle;
+	       color: #000;
+	       margin-left: 250px;
+		}
+		/* 회원가입, 취소 버튼 전체 */
+		.joincancelstart
+		{
+			background-color: white;
+			margin-top:30px;
+		}
+		.joinbutton
+		{
+		    min-width: 190px;
+		    height: 60px;
+		    padding: 0 25px;
+		    line-height: 58px;
+		    font-size: 18px;
+		    letter-spacing: -.01em;
+	        background: #000 !important;
+   			color: #fff !important;
+   			position:absolute;
+   			margin-left:366px;
+		}
+		.cancelbutton
+		{
+			min-width: 190px;
+		    height: 60px;
+		    padding: 0 25px;
+		    line-height: 58px;
+		    font-size: 18px;
+		    letter-spacing: -.01em;
+	        color: #000;
+   			border: 1px solid #000;
+    		background: #fff;
+    		position:absolute;
+    		margin-left:625px;
+		}
+		/* sms 수신동의 e-mail수신동의, 우편물   */
+		.joindocheckbox
+		{
+			margin-bottom: 10px;
+		}
+	</style>
+	<body>
+	
+		<div class="head">
+			<div class="header">
+				<h1 class="logo">
+					<a href="/hotel/index.html">Alegria Hotel</a>
+				</h1>
+				<span class="loginArea">
+					<a href="/hotel/user/login.html">로그인</a>&nbsp;|
+					<a href="/hotel/user/join.html">회원가입</a>&nbsp;|
+					<a href="/hotel/resv/confirm.html">예약 확인</a>
+				</span>
+				<!-- //.loginArea -->
+				<div class="hubMenu">
+					<ul>
+						<li>
+							<a href="/hotel/resv/doresv.html">예약</a>
+							<img src="/hotel/image/calender.png" width="20px;" height="20px;">
+						</li>
+						<li>
+							<a href="/hotel/info/map">호텔 소개</a>
+						</li>
+						<li>
+							<a href="/hotel/faq/question">고객 문의</a>
+						</li>
+						<li>
+							<a href="/hotel/promotion/event">프로모션</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //.hubMenu -->
+			</div>
+			<!-- //.header -->
+		</div>
+		<!-- //.head -->
+		<!-- 컨텐츠 시작하는 부분 -->
+		
+		<div class="main">
+			
+					<!-- 필수정보 입력란 -->
+					<div>
+						<h2 class="necesse">회원정보 변경</h2>
+					</div>
+					<!-- 필수정보 입력 시작 -->
+					<form method="post" name="joinintrofrm" action="/hotel/user/userinfochangeok.html">
+					<div class="infodostart">
+						<!-- 영문 이름, 한글 이름 커멘트 -->
+						<div class="infodovalue1">ENGLISH NAME *</div>
+						<div class="infodovalue2">KOREAN NAME *</div>
+						<br>
+						<!-- 영문 이름, 한글 이름 입력 구간 시작 -->
+						<div class="name">
+							<input type="text" class="englishname" placeholder="영문 성명">
+							<input type="text" class="koreanname" placeholder="한글 성명">
+						</div>
+						<!-- 영문 이름, 한글 이름 입력 구간 끝 -->
+							<!-- 생년월일 입력 구간 시작 -->
+							<div class="infodovalue3">BIRTH DATE *</div>
+							<br>
+							<div class="birth">
+								<select name="yy" id="year">년</select>
+								<select name="mm" id="month">월</select>
+								<select name="dd" id="day">일</select>
+							</div>
+							<!-- 생년월일 입력 구간 끝 -->
+							<br>
+							<!-- 이메일 입력 구간 시작 -->
+							<div class="email">
+								<div class="infodovalue4">ID *</div>
+								<br>
+								<input type="text" class="emailid" placeholder="이메일">
+							</div>
+							<!-- 이메일 입력 구간 끝 -->
+							<br>
+							<!-- 비밀번호, 비밀번호 확인 5,6 입력 커멘트 시작 -->
+							<div class="infodovalue5">PASSWORD *</div>
+							<div class="infodovalue6">CONFIRM PASSWORD *</div>
+							<!-- 비밀번호, 비밀번호 확인 입력 커멘트 끝 -->
+							<br>
+							<!-- 비밀번호, 비밀번호 확인 입력 구간 시작 -->
+							<div class="password">
+								<input type="password" class="pw" placeholder="새 비밀번호">
+								<input type="password" class="pwcheck" placeholder="새 비밀번호 확인">
+							</div>
+							<!-- 비밀번호, 비밀번호 확인 입력 구간 끝 -->
+							<br>
+							<!-- 성별  입력 7,8 입력 커멘트 시작 -->
+							<div class="infodovalue7">GENDER *</div>
+							<div class="infodovalue8">KOREAN/FOREIGNER *</div>
+							<br>
+							<!-- 성별  입력 7,8 입력 커멘트 끝 -->
+							<br>
+							<!-- 성별, 내국인/외국인 구간 시작  -->
+							<div class="genderstart">
+								<!-- 성별 시작  -->
+								<div class="gender">
+									<input type="radio" id="gender1" name="gender" value="male" checked>
+										<label for="gender1">남</label>
+									<input type="radio" id="gender2" name="gender" value="female">
+										<label for="gender2">여</label>
+								</div>
+								<!-- 성별 끝-->
+								<!-- 내국인 외국인 시작 -->
+								<div class="koreanforeigner">
+									<input type="radio" id="korean" name="koreanforeigner1" value="male" checked>
+										<label for="korean">내국인</label>
+									<input type="radio" id="foreigner" name="koreanforeigner1" value="female">
+										<label for="foreigner">외국인</label>
+								</div>
+								<!-- 내국인 외국인 끝 -->
+							</div>
+							<!-- 영문 이름, 한글 이름 입력 구간 끝  -->
+							<br>
+							<!-- 핸드폰 번호 입력 구간 시작 -->
+							<div class=numberstart>
+								<!-- number 코멘트 -->
+								<div class="infodovalue9">NUMBER *</div>
+								<br>
+								<!-- 번호 입력 input 시작 -->
+								<div class="number">
+									<input type="text" class="numbertext" placeholder="전화번호">
+										<p style="text-decoration: underline;"></p>
+								</div>
+								<!-- 번호 입력 input 끝 -->
+							</div>
+							<br>
+							<!-- 회원가입, 취소 버튼 구간 시작 -->
+							<div class="joincancelstart">
+								<input type=submit value="확인" class="joinbutton" id="joinbutton">
+								<input type=button value="취소" class="cancelbutton" onclick="location.href='pwconfirm.html'">
+							</div>
+							<!-- 회원가입, 취소 버튼 구간 끝 -->
+					</div>
+					</form>
+					<!-- 필수정보 입력 끝 -->
+				
+			<!--  회원가입 약관, 필수정보 입력 전체 끝 -->
+		</div>
+		<!-- //.main -->
+	</body>	
+</html>
